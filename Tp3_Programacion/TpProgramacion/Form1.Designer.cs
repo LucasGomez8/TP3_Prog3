@@ -1,7 +1,7 @@
 ﻿
 namespace TpProgramacion
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,37 +29,66 @@ namespace TpProgramacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvProductos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnOnlyProduct = new System.Windows.Forms.Button();
+            this.btnMuchosProductos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dgvProductos
+            // lblTitulo
             // 
-            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(12, 73);
-            this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.RowHeadersWidth = 51;
-            this.dgvProductos.RowTemplate.Height = 24;
-            this.dgvProductos.Size = new System.Drawing.Size(511, 193);
-            this.dgvProductos.TabIndex = 0;
+            this.lblTitulo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Variable Display", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(182, 64);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(632, 49);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Bienvenidos a Productos Locos";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
-            // Form1
+            // btnOnlyProduct
+            // 
+            this.btnOnlyProduct.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnOnlyProduct.Location = new System.Drawing.Point(574, 249);
+            this.btnOnlyProduct.Name = "btnOnlyProduct";
+            this.btnOnlyProduct.Size = new System.Drawing.Size(178, 58);
+            this.btnOnlyProduct.TabIndex = 1;
+            this.btnOnlyProduct.Text = "Clickame perroooou";
+            this.btnOnlyProduct.UseVisualStyleBackColor = false;
+            this.btnOnlyProduct.Click += new System.EventHandler(this.btnOnlyProduct_Click);
+            // 
+            // btnMuchosProductos
+            // 
+            this.btnMuchosProductos.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMuchosProductos.Location = new System.Drawing.Point(231, 249);
+            this.btnMuchosProductos.Name = "btnMuchosProductos";
+            this.btnMuchosProductos.Size = new System.Drawing.Size(178, 58);
+            this.btnMuchosProductos.TabIndex = 2;
+            this.btnMuchosProductos.Text = "Clickacho aca";
+            this.btnMuchosProductos.UseVisualStyleBackColor = false;
+            this.btnMuchosProductos.Click += new System.EventHandler(this.btnMuchosProductos_Click);
+            // 
+            // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(981, 556);
-            this.Controls.Add(this.dgvProductos);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.Controls.Add(this.btnMuchosProductos);
+            this.Controls.Add(this.btnOnlyProduct);
+            this.Controls.Add(this.lblTitulo);
+            this.Name = "frmPrincipal";
+            this.Text = "Productos Locos";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvProductos;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button btnOnlyProduct;
+        private System.Windows.Forms.Button btnMuchosProductos;
     }
 }
 

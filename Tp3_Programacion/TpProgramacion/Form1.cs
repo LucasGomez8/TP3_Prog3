@@ -11,17 +11,33 @@ using TpProgramacion.services;
 
 namespace TpProgramacion
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void frmPrincipal_Load(object sender, EventArgs e)
         {
             CommerceConnecction datos = new CommerceConnecction();
-            dgvProductos.DataSource = datos.listarProducto();
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOnlyProduct_Click(object sender, EventArgs e)
+        {
+            frmOnlyProduct onlyp = new frmOnlyProduct();
+            onlyp.ShowDialog();
+        }
+
+        private void btnMuchosProductos_Click(object sender, EventArgs e)
+        {
+            frmMuchosProductos muchop = new frmMuchosProductos();
+            muchop.ShowDialog();
         }
     }
 }
