@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpProgramacion.services;
 
 namespace TpProgramacion
 {
@@ -15,6 +16,12 @@ namespace TpProgramacion
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CommerceConnecction datos = new CommerceConnecction();
+            dgvProductos.DataSource = datos.listarProducto();
         }
     }
 }

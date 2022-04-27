@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpProgramacion.Class
 {
-    class Marca
+    class ComercialBrand
     {
     }
 }
