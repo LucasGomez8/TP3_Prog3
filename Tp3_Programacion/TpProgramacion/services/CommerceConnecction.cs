@@ -50,34 +50,40 @@ namespace TpProgramacion.services
 
         }
 
-        public Product buscarPorCodigo(string e)
+        public List<Product> buscarPorCodigo(string e)
         {
-            Product elegido = new Product();
+            List<Product> listaProducto = new List<Product>();
             SqlConnection conexionBase = new SqlConnection();
             SqlCommand comandoBase = new SqlCommand();
             SqlDataReader dbReader;
-            
 
             try
             {
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select Codigo, Nombre, Precio, Descripcion FROM ARTICULOS";
+                comandoBase.CommandText = "Select Codigo, Nombre, Descripcion, Precio From ARTICULOS ";
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
                 dbReader = comandoBase.ExecuteReader();
 
-                while (dbReader.Read() && e == (string)dbReader["Codigo"])
+                while (dbReader.Read())
                 {
-                    elegido.Nombre = (string)dbReader["Nombre"];
-                    elegido.codArticulo = (string)dbReader["Codigo"];
-                    elegido.Descripcion = (string)dbReader["Descripcion"];
-                    elegido.Precio = (decimal)dbReader["Precio"];
+                    if (e==(string)dbReader["Codigo"])
+                    {
+                        Product showP = new Product();
+                        showP.codArticulo = (string)dbReader["Codigo"];
+                        showP.Nombre = (string)dbReader["Nombre"];
+                        showP.Descripcion = (string)dbReader["Descripcion"];
+                        showP.Precio = (decimal)dbReader["Precio"];
+
+                        listaProducto.Add(showP);
+                    }
+                  
                 }
 
                 conexionBase.Close();
-                return elegido;
+                return listaProducto;
             }
             catch (Exception ex)
             {
@@ -86,6 +92,8 @@ namespace TpProgramacion.services
             }
 
         }
+
+
 
         public Product buscarPorNombre(string e)
         {
@@ -105,13 +113,19 @@ namespace TpProgramacion.services
                 conexionBase.Open();
                 dbReader = comandoBase.ExecuteReader();
 
-                while (dbReader.Read() && e == (string)dbReader["Nombre"])
+                while (dbReader.Read())
                 {
+
+                    if (e==(string)dbReader["Nombre"])
+                    {
                     elegido.Nombre = (string)dbReader["Nombre"];
                     elegido.codArticulo = (string)dbReader["Codigo"];
                     elegido.Descripcion = (string)dbReader["Descripcion"];
                     elegido.Precio = (decimal)dbReader["Precio"];
+                    }
+                    
                 }
+
 
                 conexionBase.Close();
                 return elegido;
