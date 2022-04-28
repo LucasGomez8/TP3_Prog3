@@ -27,5 +27,15 @@ namespace TpProgramacion.services
             lblR4__only.Text = productobuscado.Precio.ToString();
 
         }
+
+        private void btnNombre__only_Click(object sender, EventArgs e)
+        {
+            CommerceConnecction cc = new CommerceConnecction();
+            Product productobuscado = cc.buscarPorNombre(txtBNombre.Text);
+            lblR1__only.Text = productobuscado.codArticulo;
+            lblR2__only.Text = productobuscado.Nombre;
+            lblR4__only.Text = productobuscado.Precio.ToString();
+
+        }
     }
 }

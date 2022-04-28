@@ -41,6 +41,9 @@ namespace TpProgramacion.services
             this.lblR2__only = new System.Windows.Forms.Label();
             this.lblR4__only = new System.Windows.Forms.Label();
             this.lblR5__only = new System.Windows.Forms.Label();
+            this.txtBNombre = new System.Windows.Forms.TextBox();
+            this.lblBNombre = new System.Windows.Forms.Label();
+            this.btnNombre__only = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,11 +145,40 @@ namespace TpProgramacion.services
             this.lblR5__only.Size = new System.Drawing.Size(126, 17);
             this.lblR5__only.TabIndex = 13;
             // 
+            // txtBNombre
+            // 
+            this.txtBNombre.Location = new System.Drawing.Point(535, 169);
+            this.txtBNombre.Name = "txtBNombre";
+            this.txtBNombre.Size = new System.Drawing.Size(162, 22);
+            this.txtBNombre.TabIndex = 16;
+            // 
+            // lblBNombre
+            // 
+            this.lblBNombre.AutoSize = true;
+            this.lblBNombre.Location = new System.Drawing.Point(532, 149);
+            this.lblBNombre.Name = "lblBNombre";
+            this.lblBNombre.Size = new System.Drawing.Size(130, 17);
+            this.lblBNombre.TabIndex = 15;
+            this.lblBNombre.Text = "Busca por Nombre:";
+            // 
+            // btnNombre__only
+            // 
+            this.btnNombre__only.Location = new System.Drawing.Point(535, 197);
+            this.btnNombre__only.Name = "btnNombre__only";
+            this.btnNombre__only.Size = new System.Drawing.Size(162, 49);
+            this.btnNombre__only.TabIndex = 14;
+            this.btnNombre__only.Text = "Buscar";
+            this.btnNombre__only.UseVisualStyleBackColor = true;
+            this.btnNombre__only.Click += new System.EventHandler(this.btnNombre__only_Click);
+            // 
             // frmOnlyProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtBNombre);
+            this.Controls.Add(this.lblBNombre);
+            this.Controls.Add(this.btnNombre__only);
             this.Controls.Add(this.lblR5__only);
             this.Controls.Add(this.lblR4__only);
             this.Controls.Add(this.lblR2__only);
@@ -181,5 +213,8 @@ namespace TpProgramacion.services
         private System.Windows.Forms.Label lblR2__only;
         private System.Windows.Forms.Label lblR4__only;
         private System.Windows.Forms.Label lblR5__only;
+        private System.Windows.Forms.TextBox txtBNombre;
+        private System.Windows.Forms.Label lblBNombre;
+        private System.Windows.Forms.Button btnNombre__only;
     }
 }
