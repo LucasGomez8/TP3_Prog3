@@ -16,11 +16,10 @@ namespace TpProgramacion.services
             SqlCommand comandoBase = new SqlCommand();
             SqlDataReader dbReader;
 
-            try
-            {
+            try {
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select Codigo, Nombre, Descripcion, Precio From ARTICULOS";
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca";
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
@@ -34,6 +33,7 @@ namespace TpProgramacion.services
                     showP.Nombre = (string)dbReader["Nombre"];
                     showP.Descripcion = (string)dbReader["Descripcion"];
                     showP.Precio = (decimal)dbReader["Precio"];
+                    showP.Marca = (string)dbReader["Marca"];
 
                     listaProducto.Add(showP);
                 }

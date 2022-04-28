@@ -21,7 +21,23 @@ namespace TpProgramacion
         private void frmMuchosProductos_Load(object sender, EventArgs e)
         {
             CommerceConnecction CC = new CommerceConnecction();
+            List<Product> productList = CC.listarProducto();
+
+            foreach (Product product in productList) {
+                ListViewItem list = new ListViewItem(product.Nombre);
+                list.SubItems.Add(product.Descripcion);
+                list.SubItems.Add(product.Marca);
+                list.SubItems.Add(product.Precio.ToString());
+                listViewProducts.Items.Add(list);
+            }
             dgvMuchosProductos__productos.DataSource = CC.listarProducto();
+        }
+
+        private void listViewProducts_SelectedIndexChanged(object sender, EventArgs e) {
+            Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag;
+            if (productSelected != null) {
+                MessageBox.Show(productSelected.Nombre);
+            }
         }
     }
 }

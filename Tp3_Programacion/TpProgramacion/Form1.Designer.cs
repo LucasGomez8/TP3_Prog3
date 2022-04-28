@@ -37,10 +37,11 @@ namespace TpProgramacion
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Variable Display", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(182, 64);
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(136, 52);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(632, 49);
+            this.lblTitulo.Size = new System.Drawing.Size(474, 40);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Bienvenidos a Productos Locos";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -49,9 +50,10 @@ namespace TpProgramacion
             // btnOnlyProduct
             // 
             this.btnOnlyProduct.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnOnlyProduct.Location = new System.Drawing.Point(574, 249);
+            this.btnOnlyProduct.Location = new System.Drawing.Point(430, 202);
+            this.btnOnlyProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOnlyProduct.Name = "btnOnlyProduct";
-            this.btnOnlyProduct.Size = new System.Drawing.Size(178, 58);
+            this.btnOnlyProduct.Size = new System.Drawing.Size(134, 47);
             this.btnOnlyProduct.TabIndex = 1;
             this.btnOnlyProduct.Text = "Clickame perroooou";
             this.btnOnlyProduct.UseVisualStyleBackColor = false;
@@ -60,23 +62,25 @@ namespace TpProgramacion
             // btnMuchosProductos
             // 
             this.btnMuchosProductos.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMuchosProductos.Location = new System.Drawing.Point(231, 249);
+            this.btnMuchosProductos.Location = new System.Drawing.Point(173, 202);
+            this.btnMuchosProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMuchosProductos.Name = "btnMuchosProductos";
-            this.btnMuchosProductos.Size = new System.Drawing.Size(178, 58);
+            this.btnMuchosProductos.Size = new System.Drawing.Size(134, 47);
             this.btnMuchosProductos.TabIndex = 2;
-            this.btnMuchosProductos.Text = "Clickacho aca";
+            this.btnMuchosProductos.Text = "Ver todos los productos";
             this.btnMuchosProductos.UseVisualStyleBackColor = false;
             this.btnMuchosProductos.Click += new System.EventHandler(this.btnMuchosProductos_Click);
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(981, 556);
+            this.ClientSize = new System.Drawing.Size(736, 452);
             this.Controls.Add(this.btnMuchosProductos);
             this.Controls.Add(this.btnOnlyProduct);
             this.Controls.Add(this.lblTitulo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmPrincipal";
             this.Text = "Productos Locos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
