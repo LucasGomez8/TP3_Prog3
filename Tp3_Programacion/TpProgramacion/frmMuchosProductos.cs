@@ -32,11 +32,11 @@ namespace TpProgramacion
                 list.SubItems.Add(product.Precio.ToString());
                 listViewProducts.Items.Add(list);
             }
-            dgvMuchosProductos__productos.DataSource = CC.listarProducto();
         }
 
         private void listViewProducts_SelectedIndexChanged(object sender, EventArgs e) {
-            Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag;
+            Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag.ToString();
+            
             if (productSelected != null) {
                 MessageBox.Show(productSelected.Nombre);
             }

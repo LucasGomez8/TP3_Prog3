@@ -20,7 +20,7 @@ namespace services
             try {
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca";
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca";
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
@@ -36,6 +36,7 @@ namespace services
                     showP.Precio = (decimal)dbReader["Precio"];
                     showP.Marca = new ComercialBrand();
                     showP.Marca.Description = (string)dbReader["Marca"];
+                    showP.urlImagen = (string)dbReader["ImagenUrl"];
 
                     listaProducto.Add(showP);
                 }
@@ -103,11 +104,11 @@ namespace services
 
             try
             {
-                string query = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = " + e;
+             
                
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '"+e+"'";
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '"+e+"'";
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
@@ -121,6 +122,7 @@ namespace services
                     response.Precio = (decimal)dbReader["Precio"];
                     response.Marca = new ComercialBrand();
                     response.Marca.Description = (string)dbReader["Marca"];
+                    response.urlImagen = (string)dbReader["ImagenUrl"];
                 }
 
                 conexionBase.Close();
@@ -146,24 +148,23 @@ namespace services
             {
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select Codigo, Nombre, Precio, Descripcion FROM ARTICULOS";
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'";
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
                 dbReader = comandoBase.ExecuteReader();
 
-                while (dbReader.Read())
-                {
-
-                    if (e==(string)dbReader["Nombre"])
+                if (dbReader.Read())
                     {
                     elegido.Nombre = (string)dbReader["Nombre"];
                     elegido.codArticulo = (string)dbReader["Codigo"];
                     elegido.Descripcion = (string)dbReader["Descripcion"];
                     elegido.Precio = (decimal)dbReader["Precio"];
+                    elegido.Marca = new ComercialBrand();
+                    elegido.Marca.Description = (string)dbReader["Marca"];
+                    elegido.urlImagen = (string)dbReader["ImagenUrl"];
                     }
-                    
-                }
+                   
 
 
                 conexionBase.Close();
