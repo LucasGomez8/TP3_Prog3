@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpProgramacion.services;
+using domain;
+using services;
 
 namespace TpProgramacion
 {
@@ -26,7 +28,7 @@ namespace TpProgramacion
             foreach (Product product in productList) {
                 ListViewItem list = new ListViewItem(product.Nombre);
                 list.SubItems.Add(product.Descripcion);
-                list.SubItems.Add(product.Marca);
+                list.SubItems.Add(product.Marca.Description);
                 list.SubItems.Add(product.Precio.ToString());
                 listViewProducts.Items.Add(list);
             }

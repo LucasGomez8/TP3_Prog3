@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using TpProgramacion;
+using domain;
 
-namespace TpProgramacion.services
+namespace services
 {
-    class CommerceConnecction
+    public class CommerceConnecction
     {
         public List<Product> listarProducto()
         {
@@ -34,7 +34,8 @@ namespace TpProgramacion.services
                     showP.Nombre = (string)dbReader["Nombre"];
                     showP.Descripcion = (string)dbReader["Descripcion"];
                     showP.Precio = (decimal)dbReader["Precio"];
-                    showP.Marca = (string)dbReader["Marca"];
+                    showP.Marca = new ComercialBrand();
+                    showP.Marca.Description = (string)dbReader["Marca"];
 
                     listaProducto.Add(showP);
                 }

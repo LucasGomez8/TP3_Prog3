@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpProgramacion.Class
+namespace domain
 {
-    class Category
+    public class Category
     {
+        public int IdCategory { get; set; }
+        public string Description { get; set; }
     }
 }
