@@ -62,7 +62,7 @@ namespace services
             {
                 conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
                 comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select Codigo, Nombre, Descripcion, Precio From ARTICULOS ";
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = " + e;
                 comandoBase.Connection = conexionBase;
 
                 conexionBase.Open();
@@ -94,7 +94,45 @@ namespace services
 
         }
 
+        public Product buscarPorCod(string e)
+        {
+            Product response = new Product();
+            SqlConnection conexionBase = new SqlConnection();
+            SqlCommand comandoBase = new SqlCommand();
+            SqlDataReader dbReader;
 
+            try
+            {
+                string query = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = " + e;
+               
+                conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
+                comandoBase.CommandType = System.Data.CommandType.Text;
+                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '"+e+"'";
+                comandoBase.Connection = conexionBase;
+
+                conexionBase.Open();
+                dbReader = comandoBase.ExecuteReader();
+
+                if (dbReader.Read())
+                {
+                    response.codArticulo = (string)dbReader["Codigo"];
+                    response.Nombre = (string)dbReader["Nombre"];
+                    response.Descripcion = (string)dbReader["Descripcion"];
+                    response.Precio = (decimal)dbReader["Precio"];
+                    response.Marca = new ComercialBrand();
+                    response.Marca.Description = (string)dbReader["Marca"];
+                }
+
+                conexionBase.Close();
+                return response;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         public Product buscarPorNombre(string e)
         {

@@ -22,14 +22,13 @@ namespace TpProgramacion.services
         private void btnCodigo__only_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
-            List<Product> productobuscado = cc.buscarPorCodigo(txtBCodigo.Text);
-            foreach (Product producto in productobuscado)
-            {
-                lblR1__only.Text = producto.codArticulo;
-                lblR2__only.Text = producto.Nombre;
-                lblR4__only.Text = producto.Precio.ToString();
-            }
-            
+            Product producto = cc.buscarPorCod(txtBCodigo.Text);
+
+            lblR1__only.Text = producto.codArticulo;
+            lblR2__only.Text = producto.Nombre;
+            lblR4__only.Text = producto.Precio.ToString();
+            lblR5__only.Text = producto.Marca.Description;
+           
 
         }
 
