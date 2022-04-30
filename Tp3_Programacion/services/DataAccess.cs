@@ -50,5 +50,21 @@ namespace services
         {
             connection.Close();
         }
+
+        public void executeAction()
+        {
+            command.Connection = connection;
+            
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -116,6 +116,25 @@ namespace services
             }
 
         }
+        public void addProduct(Product adding)
+        {
+            DataAccess da = new DataAccess();
+            try
+            {
+                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion) values('"+adding.codArticulo+"','"+adding.Nombre+"','"+adding.Descripcion+"')");
+                da.executeAction();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }
 
 
     }

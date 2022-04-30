@@ -49,5 +49,11 @@ namespace TpProgramacion.services
         {
 
         }
+
+        private void btnAgregar__only_Click(object sender, EventArgs e)
+        {
+            frmNuevoProducto nuevoProducto = new frmNuevoProducto();
+            nuevoProducto.ShowDialog();
+        }
     }
 }

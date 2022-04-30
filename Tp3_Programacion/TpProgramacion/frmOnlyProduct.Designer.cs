@@ -56,7 +56,7 @@ namespace TpProgramacion.services
             this.pbxImagen__only.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxImagen__only.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbxImagen__only.Location = new System.Drawing.Point(78, 11);
-            this.pbxImagen__only.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxImagen__only.Margin = new System.Windows.Forms.Padding(2);
             this.pbxImagen__only.Name = "pbxImagen__only";
             this.pbxImagen__only.Size = new System.Drawing.Size(219, 188);
             this.pbxImagen__only.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -106,7 +106,7 @@ namespace TpProgramacion.services
             // btnCodigo__only
             // 
             this.btnCodigo__only.Location = new System.Drawing.Point(401, 63);
-            this.btnCodigo__only.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCodigo__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnCodigo__only.Name = "btnCodigo__only";
             this.btnCodigo__only.Size = new System.Drawing.Size(122, 40);
             this.btnCodigo__only.TabIndex = 6;
@@ -127,7 +127,7 @@ namespace TpProgramacion.services
             // txtBCodigo
             // 
             this.txtBCodigo.Location = new System.Drawing.Point(401, 40);
-            this.txtBCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtBCodigo.Name = "txtBCodigo";
             this.txtBCodigo.Size = new System.Drawing.Size(122, 20);
             this.txtBCodigo.TabIndex = 8;
@@ -171,7 +171,7 @@ namespace TpProgramacion.services
             // txtBNombre
             // 
             this.txtBNombre.Location = new System.Drawing.Point(401, 137);
-            this.txtBNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtBNombre.Name = "txtBNombre";
             this.txtBNombre.Size = new System.Drawing.Size(122, 20);
             this.txtBNombre.TabIndex = 16;
@@ -189,7 +189,7 @@ namespace TpProgramacion.services
             // btnNombre__only
             // 
             this.btnNombre__only.Location = new System.Drawing.Point(401, 160);
-            this.btnNombre__only.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNombre__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnNombre__only.Name = "btnNombre__only";
             this.btnNombre__only.Size = new System.Drawing.Size(122, 40);
             this.btnNombre__only.TabIndex = 14;
@@ -205,6 +205,7 @@ namespace TpProgramacion.services
             this.btnAgregar__only.TabIndex = 17;
             this.btnAgregar__only.Text = "Agregar Producto";
             this.btnAgregar__only.UseVisualStyleBackColor = true;
+            this.btnAgregar__only.Click += new System.EventHandler(this.btnAgregar__only_Click);
             // 
             // btnEditar__only
             // 
@@ -248,7 +249,7 @@ namespace TpProgramacion.services
             this.Controls.Add(this.lblCodigo__only);
             this.Controls.Add(this.lblNombre__only);
             this.Controls.Add(this.pbxImagen__only);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmOnlyProduct";
             this.Text = "frmOnlyProduct";
             this.Load += new System.EventHandler(this.frmOnlyProduct_Load);
