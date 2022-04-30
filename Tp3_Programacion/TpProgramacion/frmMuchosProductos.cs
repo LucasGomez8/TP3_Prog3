@@ -35,11 +35,11 @@ namespace TpProgramacion
         }
 
         private void listViewProducts_SelectedIndexChanged(object sender, EventArgs e) {
-            Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag.ToString();
+            //Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag.ToString();
             
-            if (productSelected != null) {
-                MessageBox.Show(productSelected.Nombre);
-            }
+           // if (productSelected != null) {
+            //   MessageBox.Show(productSelected.Nombre);
+            //}
         }
     }
 }

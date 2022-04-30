@@ -13,35 +13,27 @@ namespace services
         public List<Product> listarProducto()
         {
             List<Product> listaProducto = new List<Product>();
-            SqlConnection conexionBase = new SqlConnection();
-            SqlCommand comandoBase = new SqlCommand();
-            SqlDataReader dbReader;
+            DataAccess da = new DataAccess();
 
             try {
-                conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
-                comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca";
-                comandoBase.Connection = conexionBase;
 
-                conexionBase.Open();
-                dbReader = comandoBase.ExecuteReader();
+                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca");
+                da.execute();
 
-                while (dbReader.Read())
+                while (da.dataReader.Read())
                 {
 
                     Product showP = new Product();
-                    showP.codArticulo =(string)dbReader["Codigo"];
-                    showP.Nombre = (string)dbReader["Nombre"];
-                    showP.Descripcion = (string)dbReader["Descripcion"];
-                    showP.Precio = (decimal)dbReader["Precio"];
+                    showP.codArticulo =(string)da.dataReader["Codigo"];
+                    showP.Nombre = (string)da.dataReader["Nombre"];
+                    showP.Descripcion = (string)da.dataReader["Descripcion"];
+                    showP.Precio = (decimal)da.dataReader["Precio"];
                     showP.Marca = new ComercialBrand();
-                    showP.Marca.Description = (string)dbReader["Marca"];
-                    showP.urlImagen = (string)dbReader["ImagenUrl"];
+                    showP.Marca.Description = (string)da.dataReader["Marca"];
+                    showP.urlImagen = (string)da.dataReader["ImagenUrl"];
 
                     listaProducto.Add(showP);
                 }
-
-                conexionBase.Close();
                 return listaProducto;
             }
             catch (Exception ex)
@@ -49,48 +41,9 @@ namespace services
 
                 throw ex;
             }
-
-        }
-
-        public List<Product> buscarPorCodigo(string e)
-        {
-            List<Product> listaProducto = new List<Product>();
-            SqlConnection conexionBase = new SqlConnection();
-            SqlCommand comandoBase = new SqlCommand();
-            SqlDataReader dbReader;
-
-            try
+            finally
             {
-                conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
-                comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = " + e;
-                comandoBase.Connection = conexionBase;
-
-                conexionBase.Open();
-                dbReader = comandoBase.ExecuteReader();
-
-                while (dbReader.Read())
-                {
-                    if (e==(string)dbReader["Codigo"])
-                    {
-                        Product showP = new Product();
-                        showP.codArticulo = (string)dbReader["Codigo"];
-                        showP.Nombre = (string)dbReader["Nombre"];
-                        showP.Descripcion = (string)dbReader["Descripcion"];
-                        showP.Precio = (decimal)dbReader["Precio"];
-
-                        listaProducto.Add(showP);
-                    }
-                  
-                }
-
-                conexionBase.Close();
-                return listaProducto;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
+                da.closeConnection();
             }
 
         }
@@ -98,40 +51,33 @@ namespace services
         public Product buscarPorCod(string e)
         {
             Product response = new Product();
-            SqlConnection conexionBase = new SqlConnection();
-            SqlCommand comandoBase = new SqlCommand();
-            SqlDataReader dbReader;
-
+            DataAccess da = new DataAccess();
             try
             {
-             
-               
-                conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
-                comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '"+e+"'";
-                comandoBase.Connection = conexionBase;
 
-                conexionBase.Open();
-                dbReader = comandoBase.ExecuteReader();
+                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '" + e + "'");
+                da.execute();
 
-                if (dbReader.Read())
+                if (da.dataReader.Read())
                 {
-                    response.codArticulo = (string)dbReader["Codigo"];
-                    response.Nombre = (string)dbReader["Nombre"];
-                    response.Descripcion = (string)dbReader["Descripcion"];
-                    response.Precio = (decimal)dbReader["Precio"];
+                    response.codArticulo = (string)da.dataReader["Codigo"];
+                    response.Nombre = (string)da.dataReader["Nombre"];
+                    response.Descripcion = (string)da.dataReader["Descripcion"];
+                    response.Precio = (decimal)da.dataReader["Precio"];
                     response.Marca = new ComercialBrand();
-                    response.Marca.Description = (string)dbReader["Marca"];
-                    response.urlImagen = (string)dbReader["ImagenUrl"];
+                    response.Marca.Description = (string)da.dataReader["Marca"];
+                    response.urlImagen = (string)da.dataReader["ImagenUrl"];
                 }
 
-                conexionBase.Close();
                 return response;
             }
             catch (Exception ex)
             {
-
                 throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
             }
 
         }
@@ -139,44 +85,38 @@ namespace services
         public Product buscarPorNombre(string e)
         {
             Product elegido = new Product();
-            SqlConnection conexionBase = new SqlConnection();
-            SqlCommand comandoBase = new SqlCommand();
-            SqlDataReader dbReader;
+            DataAccess da = new DataAccess();
 
 
             try
             {
-                conexionBase.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true;";
-                comandoBase.CommandType = System.Data.CommandType.Text;
-                comandoBase.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'";
-                comandoBase.Connection = conexionBase;
+                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'");
+                da.execute();
 
-                conexionBase.Open();
-                dbReader = comandoBase.ExecuteReader();
-
-                if (dbReader.Read())
+                if (da.dataReader.Read())
                     {
-                    elegido.Nombre = (string)dbReader["Nombre"];
-                    elegido.codArticulo = (string)dbReader["Codigo"];
-                    elegido.Descripcion = (string)dbReader["Descripcion"];
-                    elegido.Precio = (decimal)dbReader["Precio"];
+                    elegido.Nombre = (string)da.dataReader["Nombre"];
+                    elegido.codArticulo = (string)da.dataReader["Codigo"];
+                    elegido.Descripcion = (string)da.dataReader["Descripcion"];
+                    elegido.Precio = (decimal)da.dataReader["Precio"];
                     elegido.Marca = new ComercialBrand();
-                    elegido.Marca.Description = (string)dbReader["Marca"];
-                    elegido.urlImagen = (string)dbReader["ImagenUrl"];
+                    elegido.Marca.Description = (string)da.dataReader["Marca"];
+                    elegido.urlImagen = (string)da.dataReader["ImagenUrl"];
                     }
                    
-
-
-                conexionBase.Close();
                 return elegido;
             }
             catch (Exception ex)
             {
-
                 throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
             }
 
         }
+
 
     }
 }
