@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using domain;
+using System.Data;
 
 namespace services
 {
@@ -15,7 +16,8 @@ namespace services
             List<Product> listaProducto = new List<Product>();
             DataAccess da = new DataAccess();
 
-            try {
+            try
+            {
 
                 da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca");
                 da.execute();
@@ -24,7 +26,7 @@ namespace services
                 {
 
                     Product showP = new Product();
-                    showP.codArticulo =(string)da.dataReader["Codigo"];
+                    showP.codArticulo = (string)da.dataReader["Codigo"];
                     showP.Nombre = (string)da.dataReader["Nombre"];
                     showP.Descripcion = (string)da.dataReader["Descripcion"];
                     showP.Precio = (decimal)da.dataReader["Precio"];
@@ -67,7 +69,9 @@ namespace services
                     response.Marca = new ComercialBrand();
                     response.Marca.Description = (string)da.dataReader["Marca"];
                     response.urlImagen = (string)da.dataReader["ImagenUrl"];
-                } else {
+                }
+                else
+                {
                     return null;
                 }
 
@@ -95,7 +99,8 @@ namespace services
                 da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'");
                 da.execute();
 
-                if (da.dataReader.Read()) {
+                if (da.dataReader.Read())
+                {
                     Console.WriteLine("response" + da.dataReader.Read());
                     elegido.Nombre = (string)da.dataReader["Nombre"];
                     elegido.codArticulo = (string)da.dataReader["Codigo"];
@@ -104,10 +109,12 @@ namespace services
                     elegido.Marca = new ComercialBrand();
                     elegido.Marca.Description = (string)da.dataReader["Marca"];
                     elegido.urlImagen = (string)da.dataReader["ImagenUrl"];
-                } else {
+                }
+                else
+                {
                     return null;
                 }
-                   
+
                 return elegido;
             }
             catch (Exception ex)
@@ -125,7 +132,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion) values('"+adding.codArticulo+"','"+adding.Nombre+"','"+adding.Descripcion+"')");
+                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "'," + adding.Marca.IdComercialBrand + "," +adding.Categoria.IdCategory + ",'" + adding.urlImagen + "'," + adding.Precio +")");
                 da.executeAction();
             }
             catch (Exception ex)
@@ -139,7 +146,34 @@ namespace services
             }
 
         }
+      
+        public DataTable getConfigFromDB(string info) {
+            DataTable data = new DataTable();
+            DataAccess response = new DataAccess();
+            data.Columns.Add("id");
+            data.Columns.Add("descripcion");
 
+            try {
+                response.setConsulta("Select id, descripcion from " + info);
+                response.execute();
 
+                while (response.dataReader.Read()) {
+                    DataRow row = data.NewRow();
+
+                    row["id"] = (int)response.dataReader["id"];
+                    row["descripcion"] = (string)response.dataReader["descripcion"];
+
+                    data.Rows.Add(row);
+                }
+                return data;
+            }
+            catch (Exception ex) {
+
+                throw ex;
+            }
+            finally {
+                response.closeConnection();
+            }
+        }
     }
 }
