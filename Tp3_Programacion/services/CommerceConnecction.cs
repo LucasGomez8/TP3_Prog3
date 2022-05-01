@@ -1,10 +1,6 @@
-﻿using System;
+﻿using domain;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using domain;
 using System.Data;
 
 namespace services
@@ -132,7 +128,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "'," + adding.Marca.IdComercialBrand + "," +adding.Categoria.IdCategory + ",'" + adding.urlImagen + "'," + adding.Precio +")");
+                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "'," + adding.Marca.IdComercialBrand + "," + adding.Categoria.IdCategory + ",'" + adding.urlImagen + "'," + adding.Precio + ")");
                 da.executeAction();
             }
             catch (Exception ex)
@@ -146,18 +142,21 @@ namespace services
             }
 
         }
-      
-        public DataTable getConfigFromDB(string info) {
+
+        public DataTable getConfigFromDB(string info)
+        {
             DataTable data = new DataTable();
             DataAccess response = new DataAccess();
             data.Columns.Add("id");
             data.Columns.Add("descripcion");
 
-            try {
+            try
+            {
                 response.setConsulta("Select id, descripcion from " + info);
                 response.execute();
 
-                while (response.dataReader.Read()) {
+                while (response.dataReader.Read())
+                {
                     DataRow row = data.NewRow();
 
                     row["id"] = (int)response.dataReader["id"];
@@ -167,11 +166,13 @@ namespace services
                 }
                 return data;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 throw ex;
             }
-            finally {
+            finally
+            {
                 response.closeConnection();
             }
         }

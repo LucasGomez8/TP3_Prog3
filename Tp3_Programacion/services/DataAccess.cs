@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace services
@@ -32,18 +28,19 @@ namespace services
             try
             {
                 connection.Open();
-                dbReader = command.ExecuteReader();  
+                dbReader = command.ExecuteReader();
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            
+
 
         }
-        public SqlDataReader dataReader{
-            get{ return dbReader; }
+        public SqlDataReader dataReader
+        {
+            get { return dbReader; }
         }
 
         public void closeConnection()
@@ -54,7 +51,7 @@ namespace services
         public void executeAction()
         {
             command.Connection = connection;
-            
+
             try
             {
                 connection.Open();
