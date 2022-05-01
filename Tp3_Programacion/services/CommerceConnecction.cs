@@ -67,6 +67,8 @@ namespace services
                     response.Marca = new ComercialBrand();
                     response.Marca.Description = (string)da.dataReader["Marca"];
                     response.urlImagen = (string)da.dataReader["ImagenUrl"];
+                } else {
+                    return null;
                 }
 
                 return response;
@@ -93,8 +95,8 @@ namespace services
                 da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'");
                 da.execute();
 
-                if (da.dataReader.Read())
-                    {
+                if (da.dataReader.Read()) {
+                    Console.WriteLine("response" + da.dataReader.Read());
                     elegido.Nombre = (string)da.dataReader["Nombre"];
                     elegido.codArticulo = (string)da.dataReader["Codigo"];
                     elegido.Descripcion = (string)da.dataReader["Descripcion"];
@@ -102,7 +104,9 @@ namespace services
                     elegido.Marca = new ComercialBrand();
                     elegido.Marca.Description = (string)da.dataReader["Marca"];
                     elegido.urlImagen = (string)da.dataReader["ImagenUrl"];
-                    }
+                } else {
+                    return null;
+                }
                    
                 return elegido;
             }

@@ -15,6 +15,5 @@ namespace domain
         public ComercialBrand Marca { get; set; }
         public decimal Precio { get; set; }
 
-
     }
 }
