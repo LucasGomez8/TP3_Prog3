@@ -7,6 +7,9 @@ namespace TpProgramacion.services
 {
     public partial class frmOnlyProduct : Form
     {
+
+        private Product productoBuscado;
+
         public frmOnlyProduct()
         {
             InitializeComponent();
@@ -35,15 +38,15 @@ namespace TpProgramacion.services
         private void btnNombre__only_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
-            Product productobuscado = cc.buscarPorNombre(txtBNombre.Text);
+            productoBuscado = cc.buscarPorNombre(txtBNombre.Text);
 
-            if (productobuscado != null)
+            if (productoBuscado != null)
             {
-                lblR1__only.Text = productobuscado.codArticulo;
-                lblR2__only.Text = productobuscado.Nombre;
-                lblR4__only.Text = productobuscado.Precio.ToString();
-                lblR5__only.Text = productobuscado.Marca.Description;
-                pbxImagen__only.Load(productobuscado.urlImagen);
+                lblR1__only.Text = productoBuscado.codArticulo;
+                lblR2__only.Text = productoBuscado.Nombre;
+                lblR4__only.Text = productoBuscado.Precio.ToString();
+                lblR5__only.Text = productoBuscado.Marca.Description;
+                pbxImagen__only.Load(productoBuscado.urlImagen);
             }
             else
             {
@@ -54,12 +57,36 @@ namespace TpProgramacion.services
 
         private void frmOnlyProduct_Load(object sender, EventArgs e)
         {
+            productoBuscado = null;
         }
 
         private void btnAgregar__only_Click(object sender, EventArgs e)
         {
             frmNuevoProducto nuevoProducto = new frmNuevoProducto();
             nuevoProducto.ShowDialog();
+        }
+
+        private void btnEditar__only_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBorrar__only_Click(object sender, EventArgs e)
+        {
+            if (productoBuscado == null)
+            {
+                MessageBox.Show("Primero debe buscar el articulo que quiere borrar.");
+                return;
+            }
+            //CommerceConnecction cc = new CommerceConnecction();
+            /*
+            if (cc.deleteProduct(productoBuscado.codArticulo) > 0)
+            {
+                MessageBox.Show("Articulo eliminado de la Base de Datos");
+                return;
+            }
+            MessageBox.Show("Ocurrio un error al eliminar el articulo");*/
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace services
         private SqlConnection connection;
         private SqlCommand command;
         private SqlDataReader dbReader;
+        private int lineAfected;
 
 
         public DataAccess()
@@ -22,6 +23,11 @@ namespace services
             command.CommandText = e;
         }
 
+        public void setConsultaWhitParameters(SqlCommand e)
+        {
+            command = e;
+        }
+
         public void execute()
         {
             command.Connection = connection;
@@ -29,6 +35,7 @@ namespace services
             {
                 connection.Open();
                 dbReader = command.ExecuteReader();
+                lineAfected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -43,8 +50,14 @@ namespace services
             get { return dbReader; }
         }
 
+        public int getLineCantAfected()
+        {
+            return lineAfected;
+        }
+
         public void closeConnection()
         {
+            command.Connection.Close();
             connection.Close();
         }
 

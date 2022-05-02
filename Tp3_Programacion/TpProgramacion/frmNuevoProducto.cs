@@ -47,17 +47,5 @@ namespace TpProgramacion
             cbCategoria_Nuevo.DisplayMember = "descripcion";
             cbCategoria_Nuevo.ValueMember = "id";
         }
-
-        private void cbMarca_Nuevo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var value = cbMarca_Nuevo.SelectedValue;
-            testId1.Text = value.ToString();
-        }
-
-        private void cbCategoria_Nuevo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var value = cbCategoria_Nuevo.SelectedValue;
-            testId2.Text = value.ToString();
-        }
     }
 }

@@ -215,6 +215,7 @@ namespace TpProgramacion.services
             this.btnEditar__only.TabIndex = 18;
             this.btnEditar__only.Text = "Editar Producto";
             this.btnEditar__only.UseVisualStyleBackColor = true;
+            this.btnEditar__only.Click += new System.EventHandler(this.btnEditar__only_Click);
             // 
             // btnBorrar__only
             // 
@@ -224,6 +225,7 @@ namespace TpProgramacion.services
             this.btnBorrar__only.TabIndex = 19;
             this.btnBorrar__only.Text = "Borrar Producto";
             this.btnBorrar__only.UseVisualStyleBackColor = true;
+            this.btnBorrar__only.Click += new System.EventHandler(this.btnBorrar__only_Click);
             // 
             // frmOnlyProduct
             // 

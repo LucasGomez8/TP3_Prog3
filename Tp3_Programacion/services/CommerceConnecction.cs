@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace services
 {
@@ -52,10 +53,15 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-
+                
+                //string query = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca "+
+                  //  " From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = @Codigo";
+                //SqlCommand command = new SqlCommand(query);
+                //command.Parameters.AddWithValue("@Codigo", e);
                 da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '" + e + "'");
+                //da.setConsultaWhitParameters(command);
+                
                 da.execute();
-
                 if (da.dataReader.Read())
                 {
                     response.codArticulo = (string)da.dataReader["Codigo"];
@@ -142,6 +148,31 @@ namespace services
             }
 
         }
+
+      /*  public int deleteProduct(String delete)
+        {
+            DataAccess da = new DataAccess();
+            try
+            {
+                string query = "delete articulos where codigo = @Codigo";
+                SqlCommand command = new SqlCommand(query);
+                command.Parameters.AddWithValue("@Codigo", delete);
+                da.setConsultaWhitParameters(command);
+                da.executeAction();
+                da.dataReader.Close();
+                return da.getLineCantAfected();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                da.closeConnection();
+            }
+
+        }*/
 
         public DataTable getConfigFromDB(string info)
         {
