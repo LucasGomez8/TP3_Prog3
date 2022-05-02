@@ -23,9 +23,11 @@ namespace services
             command.CommandText = e;
         }
 
-        public void setConsultaWhitParameters(SqlCommand e)
+        public void setConsultaWhitParameters(string parameter, String e)
         {
-            command = e;
+
+            command.Parameters.AddWithValue(parameter, e);
+            
         }
 
         public void execute()
@@ -67,6 +69,7 @@ namespace services
             {
                 connection.Open();
                 command.ExecuteNonQuery();
+                lineAfected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

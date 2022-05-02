@@ -15,18 +15,31 @@ namespace TpProgramacion.services
             InitializeComponent();
         }
 
+        public void imageLoad(string e)
+        {
+            try
+            {
+                pbxImagen__only.Load(e);
+            }
+            catch (Exception)
+            {
+
+                pbxImagen__only.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
+            }
+        }
+
         private void btnCodigo__only_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
-            Product producto = cc.buscarPorCod(txtBCodigo.Text);
+            productoBuscado = cc.buscarPorCod(txtBCodigo.Text);
 
-            if (producto != null)
+            if (productoBuscado != null)
             {
-                lblR1__only.Text = producto.codArticulo;
-                lblR2__only.Text = producto.Nombre;
-                lblR4__only.Text = producto.Precio.ToString();
-                lblR5__only.Text = producto.Marca.Description;
-                pbxImagen__only.Load(producto.urlImagen);
+                lblR1__only.Text = productoBuscado.codArticulo;
+                lblR2__only.Text = productoBuscado.Nombre;
+                lblR4__only.Text = productoBuscado.Precio.ToString();
+                lblR5__only.Text = productoBuscado.Marca.Description;
+                imageLoad(productoBuscado.urlImagen);
             }
             else
             {
@@ -46,7 +59,7 @@ namespace TpProgramacion.services
                 lblR2__only.Text = productoBuscado.Nombre;
                 lblR4__only.Text = productoBuscado.Precio.ToString();
                 lblR5__only.Text = productoBuscado.Marca.Description;
-                pbxImagen__only.Load(productoBuscado.urlImagen);
+                imageLoad(productoBuscado.urlImagen);
             }
             else
             {
@@ -68,6 +81,14 @@ namespace TpProgramacion.services
 
         private void btnEditar__only_Click(object sender, EventArgs e)
         {
+            if(productoBuscado == null)
+            {
+                MessageBox.Show("Primero debe buscar el articulo que quiere editar.");
+                return;
+            }
+            CommerceConnecction cc = new CommerceConnecction();
+            frmNuevoProducto editar = new frmNuevoProducto(productoBuscado);
+            editar.ShowDialog();
 
         }
 
@@ -78,14 +99,14 @@ namespace TpProgramacion.services
                 MessageBox.Show("Primero debe buscar el articulo que quiere borrar.");
                 return;
             }
-            //CommerceConnecction cc = new CommerceConnecction();
-            /*
-            if (cc.deleteProduct(productoBuscado.codArticulo) > 0)
+            CommerceConnecction cc = new CommerceConnecction();
+            
+            if (cc.deleteProduct(productoBuscado.codArticulo) == 0)
             {
                 MessageBox.Show("Articulo eliminado de la Base de Datos");
                 return;
             }
-            MessageBox.Show("Ocurrio un error al eliminar el articulo");*/
+            MessageBox.Show("Ocurrio un error al eliminar el articulo");
 
         }
     }

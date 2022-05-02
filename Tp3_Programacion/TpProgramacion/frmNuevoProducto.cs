@@ -8,9 +8,17 @@ namespace TpProgramacion
 {
     public partial class frmNuevoProducto : Form
     {
+
+        private Product product = null;
         public frmNuevoProducto()
         {
             InitializeComponent();
+        }
+
+        public frmNuevoProducto(Product edit)
+        {
+            InitializeComponent();
+            this.product = edit;
         }
 
         private void btnAgregar__Nuevo_Click(object sender, EventArgs e)
@@ -40,12 +48,23 @@ namespace TpProgramacion
             DataTable comercialBrands = CC.getConfigFromDB("Marcas");
             DataTable categories = CC.getConfigFromDB("Categorias");
 
+
             cbMarca_Nuevo.DataSource = comercialBrands;
             cbMarca_Nuevo.DisplayMember = "descripcion";
             cbMarca_Nuevo.ValueMember = "id";
             cbCategoria_Nuevo.DataSource = categories;
             cbCategoria_Nuevo.DisplayMember = "descripcion";
             cbCategoria_Nuevo.ValueMember = "id";
+
+            if (product != null)
+            {
+                txtCodigo__Nuevo.Text = product.codArticulo;
+                txtNombre__Nuevo.Text = product.Nombre;
+                txtDescripcion__Nuevo.Text = product.Descripcion;
+                txtUrlImagen_Nuevo.Text = product.urlImagen;
+                cbMarca_Nuevo.SelectedValue = product.Marca.Id;
+            }
+          
         }
     }
 }
