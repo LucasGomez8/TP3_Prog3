@@ -35,7 +35,6 @@ namespace services
             {
                 connection.Open();
                 dbReader = command.ExecuteReader();
-                lineAfected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -57,7 +56,6 @@ namespace services
 
         public void closeConnection()
         {
-            command.Connection.Close();
             connection.Close();
         }
 
