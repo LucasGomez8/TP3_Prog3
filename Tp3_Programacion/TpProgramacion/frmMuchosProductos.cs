@@ -105,7 +105,6 @@ namespace TpProgramacion
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
 
