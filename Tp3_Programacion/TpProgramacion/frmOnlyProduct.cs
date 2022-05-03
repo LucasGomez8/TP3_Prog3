@@ -109,5 +109,10 @@ namespace TpProgramacion.services
             MessageBox.Show("Ocurrio un error al eliminar el articulo");
 
         }
+
+        private void pbxImagen__only_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

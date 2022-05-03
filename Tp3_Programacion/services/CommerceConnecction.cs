@@ -16,7 +16,7 @@ namespace services
             try
             {
 
-                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.Id as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.Id=A.IdCategoria");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.Id as CID, C.Descripcion as Categoria From ARTICULOS A, MARCAS M, CATEGORIAS C where A.Idmarca = M.Id AND C.Id=A.IdCategoria");
                 da.execute();
 
                 while (da.dataReader.Read())

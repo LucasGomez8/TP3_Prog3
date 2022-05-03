@@ -8,6 +8,8 @@ namespace TpProgramacion
 {
     public partial class frmMuchosProductos : Form
     {
+
+        private List<Product> productlist;
         public frmMuchosProductos()
         {
             InitializeComponent();
@@ -15,26 +17,50 @@ namespace TpProgramacion
 
         private void frmMuchosProductos_Load(object sender, EventArgs e)
         {
-            CommerceConnecction CC = new CommerceConnecction();
-            List<Product> productList = CC.listarProducto();
+            load();
+        }
 
-            foreach (Product product in productList)
+        public void load()
+        {
+            CommerceConnecction cc = new CommerceConnecction();
+            try
             {
-                ListViewItem list = new ListViewItem(product.Nombre);
-                list.SubItems.Add(product.Descripcion);
-                list.SubItems.Add(product.Marca.Description);
-                list.SubItems.Add(product.Precio.ToString());
-                listViewProducts.Items.Add(list);
+                productlist = cc.listarProducto();
+                dvgTodosLosProductos.DataSource = productlist;
+                dvgTodosLosProductos.Columns["UrlImagen"].Visible = false;
+                dvgTodosLosProductos.Columns["Id"].Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
 
-        private void listViewProducts_SelectedIndexChanged(object sender, EventArgs e)
+        private void dvgTodosLosProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Product productSelected = (Product)listViewProducts.SelectedItems[0].Tag.ToString();
 
-            // if (productSelected != null) {
-            //   MessageBox.Show(productSelected.Nombre);
-            //}
+        }
+        
+        public void imageLoad(string img)
+        {
+            try
+            {
+                pbxTodos.Load(img);
+            }
+            catch (Exception)
+            {
+
+                pbxTodos.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
+            }
+            
+        }
+
+        private void dvgTodosLosProductos_SelectionChanged(object sender, EventArgs e)
+        {
+            Product select = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
+            imageLoad(select.urlImagen);
         }
     }
 }

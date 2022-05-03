@@ -62,6 +62,7 @@ namespace TpProgramacion.services
             this.pbxImagen__only.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagen__only.TabIndex = 0;
             this.pbxImagen__only.TabStop = false;
+            this.pbxImagen__only.Click += new System.EventHandler(this.pbxImagen__only_Click);
             // 
             // lblNombre__only
             // 
