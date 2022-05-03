@@ -73,6 +73,7 @@
     <Compile Include="frmOnlyProduct.Designer.cs">
       <DependentUpon>frmOnlyProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="System\KeyEventHandler.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

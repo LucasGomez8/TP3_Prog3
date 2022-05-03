@@ -59,12 +59,10 @@ namespace services
             try
             {
 
-                //string query = "Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca "+
-                //  " From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = @Codigo";
-                //SqlCommand command = new SqlCommand(query);
-                //command.Parameters.AddWithValue("@Codigo", e);
-                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Codigo = '" + e + "'");
-                //da.setConsultaWhitParameters(command);
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, " + 
+                    "M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca " + 
+                    "left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Codigo = @Codigo");
+                da.setConsultaWhitParameters("@Codigo", e);
 
                 da.execute();
                 if (da.dataReader.Read())
@@ -168,7 +166,7 @@ namespace services
             try
             {
                 da.setConsulta("delete articulos where codigo = @Codigo");
-                da.setConsultaWhitParameters("@Codigo",del);
+                da.setConsultaWhitParameters("@Codigo", del);
                 da.executeAction();
                 return da.getLineCantAfected();
             }
@@ -222,7 +220,8 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre,Descripcion=@Descripcion,ImagenUrl=@Imagen,IdMarca=@idmarca,IdCategoria=@idcategoria,Precio=@precio where Id=@id");
+                da.setConsulta("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre,Descripcion=@Descripcion, " + 
+                    "ImagenUrl=@Imagen,IdMarca=@idmarca,IdCategoria=@idcategoria,Precio=@precio where Id=@id");
                 da.setConsultaWhitParameters("@Codigo",edit.codArticulo);
                 da.setConsultaWhitParameters("@Nombre",edit.Nombre);
                 da.setConsultaWhitParameters("@Descripcion",edit.Descripcion);

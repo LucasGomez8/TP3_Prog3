@@ -25,7 +25,6 @@ namespace TpProgramacion
 
         private void btnAgregar__Nuevo_Click(object sender, EventArgs e)
         {
-            //roduct nuevo = new Product();
             CommerceConnecction CC = new CommerceConnecction();
             try
             {
@@ -59,10 +58,10 @@ namespace TpProgramacion
 
                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ocurrio un error al cargar el producto.");
             }
             
 
@@ -75,7 +74,6 @@ namespace TpProgramacion
             DataTable comercialBrands = CC.getConfigFromDB("Marcas");
             DataTable categories = CC.getConfigFromDB("Categorias");
 
-
             cbMarca_Nuevo.DataSource = comercialBrands;
             cbMarca_Nuevo.DisplayMember = "descripcion";
             cbMarca_Nuevo.ValueMember = "id";
@@ -86,6 +84,7 @@ namespace TpProgramacion
             if (product != null)
             {
                 txtCodigo__Nuevo.Text = product.codArticulo;
+                txtCodigo__Nuevo.ReadOnly = true;
                 txtNombre__Nuevo.Text = product.Nombre;
                 txtDescripcion__Nuevo.Text = product.Descripcion;
                 txtUrlImagen_Nuevo.Text = product.urlImagen;
@@ -94,6 +93,34 @@ namespace TpProgramacion
                 cbCategoria_Nuevo.SelectedValue = product.Categoria.IdCategory;
             }
           
+        }
+
+        private void txtPrecio_Nuevo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && 
+                !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.') &&
+                (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            string point = "";
+            TextBox txtBox = (TextBox)sender;
+            // only allow one decimal point
+            if ((e.KeyChar == '.') || (e.KeyChar == ','))
+            {
+                if ((txtBox.Text.IndexOf('.') > -1) ||
+                (txtBox.Text.IndexOf(',') > -1))
+                {
+                    e.Handled = true;
+                }
+
+            }
+            
+            //int idxPoint = (sender as TextBox).Text.IndexOf(point);
+            //if (idxPoint + 3 >= txtBox.Text.Length) e.Handled = true;
+            
         }
     }
 }

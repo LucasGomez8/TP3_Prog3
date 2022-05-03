@@ -68,7 +68,6 @@ namespace services
             try
             {
                 connection.Open();
-                command.ExecuteNonQuery();
                 lineAfected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
