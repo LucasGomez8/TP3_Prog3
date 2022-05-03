@@ -50,20 +50,20 @@ namespace TpProgramacion
             // btnOnlyProduct
             // 
             this.btnOnlyProduct.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnOnlyProduct.Location = new System.Drawing.Point(430, 202);
-            this.btnOnlyProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOnlyProduct.Location = new System.Drawing.Point(476, 281);
+            this.btnOnlyProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnOnlyProduct.Name = "btnOnlyProduct";
             this.btnOnlyProduct.Size = new System.Drawing.Size(134, 47);
             this.btnOnlyProduct.TabIndex = 1;
-            this.btnOnlyProduct.Text = "Clickame perroooou";
+            this.btnOnlyProduct.Text = "Busqueda por producto";
             this.btnOnlyProduct.UseVisualStyleBackColor = false;
             this.btnOnlyProduct.Click += new System.EventHandler(this.btnOnlyProduct_Click);
             // 
             // btnMuchosProductos
             // 
             this.btnMuchosProductos.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMuchosProductos.Location = new System.Drawing.Point(173, 202);
-            this.btnMuchosProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMuchosProductos.Location = new System.Drawing.Point(143, 281);
+            this.btnMuchosProductos.Margin = new System.Windows.Forms.Padding(2);
             this.btnMuchosProductos.Name = "btnMuchosProductos";
             this.btnMuchosProductos.Size = new System.Drawing.Size(134, 47);
             this.btnMuchosProductos.TabIndex = 2;
@@ -80,7 +80,7 @@ namespace TpProgramacion
             this.Controls.Add(this.btnMuchosProductos);
             this.Controls.Add(this.btnOnlyProduct);
             this.Controls.Add(this.lblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
             this.Text = "Productos Locos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);

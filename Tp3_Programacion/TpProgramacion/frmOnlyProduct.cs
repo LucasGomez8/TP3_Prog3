@@ -13,6 +13,7 @@ namespace TpProgramacion.services
         public frmOnlyProduct()
         {
             InitializeComponent();
+            Text = "Busqueda Especifica";
         }
 
         public void imageLoad(string e)

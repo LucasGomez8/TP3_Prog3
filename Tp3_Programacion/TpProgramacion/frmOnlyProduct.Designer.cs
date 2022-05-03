@@ -55,7 +55,7 @@ namespace TpProgramacion.services
             this.pbxImagen__only.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pbxImagen__only.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxImagen__only.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxImagen__only.Location = new System.Drawing.Point(78, 11);
+            this.pbxImagen__only.Location = new System.Drawing.Point(140, 11);
             this.pbxImagen__only.Margin = new System.Windows.Forms.Padding(2);
             this.pbxImagen__only.Name = "pbxImagen__only";
             this.pbxImagen__only.Size = new System.Drawing.Size(219, 188);
@@ -105,7 +105,7 @@ namespace TpProgramacion.services
             // 
             // btnCodigo__only
             // 
-            this.btnCodigo__only.Location = new System.Drawing.Point(401, 63);
+            this.btnCodigo__only.Location = new System.Drawing.Point(431, 61);
             this.btnCodigo__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnCodigo__only.Name = "btnCodigo__only";
             this.btnCodigo__only.Size = new System.Drawing.Size(122, 40);
@@ -117,7 +117,7 @@ namespace TpProgramacion.services
             // lblBCodigo__only
             // 
             this.lblBCodigo__only.AutoSize = true;
-            this.lblBCodigo__only.Location = new System.Drawing.Point(399, 24);
+            this.lblBCodigo__only.Location = new System.Drawing.Point(429, 22);
             this.lblBCodigo__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBCodigo__only.Name = "lblBCodigo__only";
             this.lblBCodigo__only.Size = new System.Drawing.Size(94, 13);
@@ -126,7 +126,7 @@ namespace TpProgramacion.services
             // 
             // txtBCodigo
             // 
-            this.txtBCodigo.Location = new System.Drawing.Point(401, 40);
+            this.txtBCodigo.Location = new System.Drawing.Point(431, 38);
             this.txtBCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtBCodigo.Name = "txtBCodigo";
             this.txtBCodigo.Size = new System.Drawing.Size(122, 20);
@@ -170,7 +170,7 @@ namespace TpProgramacion.services
             // 
             // txtBNombre
             // 
-            this.txtBNombre.Location = new System.Drawing.Point(401, 137);
+            this.txtBNombre.Location = new System.Drawing.Point(431, 135);
             this.txtBNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtBNombre.Name = "txtBNombre";
             this.txtBNombre.Size = new System.Drawing.Size(122, 20);
@@ -179,7 +179,7 @@ namespace TpProgramacion.services
             // lblBNombre
             // 
             this.lblBNombre.AutoSize = true;
-            this.lblBNombre.Location = new System.Drawing.Point(399, 121);
+            this.lblBNombre.Location = new System.Drawing.Point(429, 119);
             this.lblBNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBNombre.Name = "lblBNombre";
             this.lblBNombre.Size = new System.Drawing.Size(98, 13);
@@ -188,7 +188,7 @@ namespace TpProgramacion.services
             // 
             // btnNombre__only
             // 
-            this.btnNombre__only.Location = new System.Drawing.Point(401, 160);
+            this.btnNombre__only.Location = new System.Drawing.Point(431, 158);
             this.btnNombre__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnNombre__only.Name = "btnNombre__only";
             this.btnNombre__only.Size = new System.Drawing.Size(122, 40);
@@ -219,7 +219,7 @@ namespace TpProgramacion.services
             // 
             // btnBorrar__only
             // 
-            this.btnBorrar__only.Location = new System.Drawing.Point(423, 314);
+            this.btnBorrar__only.Location = new System.Drawing.Point(432, 314);
             this.btnBorrar__only.Name = "btnBorrar__only";
             this.btnBorrar__only.Size = new System.Drawing.Size(100, 29);
             this.btnBorrar__only.TabIndex = 19;
