@@ -13,31 +13,58 @@ namespace TpProgramacion
         public frmNuevoProducto()
         {
             InitializeComponent();
+            Text = "Nuevo Producto";
         }
 
         public frmNuevoProducto(Product edit)
         {
             InitializeComponent();
             this.product = edit;
+            Text = "Modificar Producto";
         }
 
         private void btnAgregar__Nuevo_Click(object sender, EventArgs e)
         {
-            Product nuevo = new Product();
+            //roduct nuevo = new Product();
             CommerceConnecction CC = new CommerceConnecction();
+            try
+            {
+                if (product == null) product = new Product();
 
-            nuevo.codArticulo = txtCodigo__Nuevo.Text;
-            nuevo.Nombre = txtNombre__Nuevo.Text;
-            nuevo.Descripcion = txtDescripcion__Nuevo.Text;
-            nuevo.Marca = new ComercialBrand();
-            string idCommercialBrand = cbMarca_Nuevo.SelectedValue.ToString();
-            nuevo.Marca.IdComercialBrand = Convert.ToInt32(idCommercialBrand);
-            nuevo.Categoria = new Category();
-            string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
-            nuevo.Categoria.IdCategory = Convert.ToInt32(idCategory);
-            nuevo.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
-            nuevo.urlImagen = txtUrlImagen_Nuevo.Text;
-            CC.addProduct(nuevo);
+                product.codArticulo = txtCodigo__Nuevo.Text;
+                product.Nombre = txtNombre__Nuevo.Text;
+                product.Descripcion = txtDescripcion__Nuevo.Text;
+                product.Marca = new ComercialBrand();
+                string idCommercialBrand = cbMarca_Nuevo.SelectedValue.ToString();
+                product.Marca.IdComercialBrand = Convert.ToInt32(idCommercialBrand);
+                product.Categoria = new Category();
+                string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
+                product.Categoria.IdCategory = Convert.ToInt32(idCategory);
+                product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
+                product.urlImagen = txtUrlImagen_Nuevo.Text;
+
+                if (product.Id != 0)
+                {
+                    CC.editProduct(product);
+                    MessageBox.Show("Se ha Modificado con exito");
+                    Close();
+                }
+                else
+                {
+                    CC.addProduct(product);
+                    MessageBox.Show("Se ha cargado el producto con exito");
+                    Close();
+                }
+                
+
+               
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
 
 
         }
@@ -62,7 +89,9 @@ namespace TpProgramacion
                 txtNombre__Nuevo.Text = product.Nombre;
                 txtDescripcion__Nuevo.Text = product.Descripcion;
                 txtUrlImagen_Nuevo.Text = product.urlImagen;
-                cbMarca_Nuevo.SelectedValue = product.Marca.Id;
+                txtPrecio_Nuevo.Text = product.Precio.ToString() ;
+                cbMarca_Nuevo.SelectedValue = product.Marca.IdComercialBrand;
+                cbCategoria_Nuevo.SelectedValue = product.Categoria.IdCategory;
             }
           
         }

@@ -86,7 +86,6 @@ namespace TpProgramacion.services
                 MessageBox.Show("Primero debe buscar el articulo que quiere editar.");
                 return;
             }
-            CommerceConnecction cc = new CommerceConnecction();
             frmNuevoProducto editar = new frmNuevoProducto(productoBuscado);
             editar.ShowDialog();
 

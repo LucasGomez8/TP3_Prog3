@@ -16,19 +16,24 @@ namespace services
             try
             {
 
-                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.Id as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.Id=A.IdCategoria");
                 da.execute();
 
                 while (da.dataReader.Read())
                 {
 
                     Product showP = new Product();
+                    showP.Id = (int)da.dataReader["Id"];
                     showP.codArticulo = (string)da.dataReader["Codigo"];
                     showP.Nombre = (string)da.dataReader["Nombre"];
                     showP.Descripcion = (string)da.dataReader["Descripcion"];
                     showP.Precio = (decimal)da.dataReader["Precio"];
                     showP.Marca = new ComercialBrand();
                     showP.Marca.Description = (string)da.dataReader["Marca"];
+                    showP.Marca.IdComercialBrand = (int)da.dataReader["MID"];
+                    showP.Categoria = new Category();
+                    showP.Categoria.IdCategory = (int)da.dataReader["CID"];
+                    showP.Categoria.Description = (string)da.dataReader["Categoria"];
                     showP.urlImagen = (string)da.dataReader["ImagenUrl"];
 
                     listaProducto.Add(showP);
@@ -58,18 +63,23 @@ namespace services
                 //  " From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = @Codigo";
                 //SqlCommand command = new SqlCommand(query);
                 //command.Parameters.AddWithValue("@Codigo", e);
-                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Codigo = '" + e + "'");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Codigo = '" + e + "'");
                 //da.setConsultaWhitParameters(command);
 
                 da.execute();
                 if (da.dataReader.Read())
                 {
+                    response.Id = (int)da.dataReader["Id"];
                     response.codArticulo = (string)da.dataReader["Codigo"];
                     response.Nombre = (string)da.dataReader["Nombre"];
                     response.Descripcion = (string)da.dataReader["Descripcion"];
                     response.Precio = (decimal)da.dataReader["Precio"];
                     response.Marca = new ComercialBrand();
+                    response.Categoria = new Category();
                     response.Marca.Description = (string)da.dataReader["Marca"];
+                    response.Marca.IdComercialBrand = (int)da.dataReader["MID"];
+                    response.Categoria.Description = (string)da.dataReader["Categoria"];
+                    response.Categoria.IdCategory = (int)da.dataReader["CID"];
                     response.urlImagen = (string)da.dataReader["ImagenUrl"];
                 }
                 else
@@ -97,17 +107,22 @@ namespace services
 
             try
             {
-                da.setConsulta("Select A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca where A.Nombre = '" + e + "'");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Nombre = '" + e + "'");
                 da.execute();
 
                 if (da.dataReader.Read())
                 {
+                    elegido.Id = (int)da.dataReader["Id"];
                     elegido.Nombre = (string)da.dataReader["Nombre"];
                     elegido.codArticulo = (string)da.dataReader["Codigo"];
                     elegido.Descripcion = (string)da.dataReader["Descripcion"];
                     elegido.Precio = (decimal)da.dataReader["Precio"];
                     elegido.Marca = new ComercialBrand();
                     elegido.Marca.Description = (string)da.dataReader["Marca"];
+                    elegido.Marca.IdComercialBrand = (int)da.dataReader["MID"];
+                    elegido.Categoria = new Category();
+                    elegido.Categoria.IdCategory = (int)da.dataReader["CID"];
+                    elegido.Categoria.Description = (string)da.dataReader["Categoria"];
                     elegido.urlImagen = (string)da.dataReader["ImagenUrl"];
                 }
                 else
@@ -147,13 +162,13 @@ namespace services
 
         }
 
-        public int deleteProduct(String delete)
+        public int deleteProduct(string del)
         {
             DataAccess da = new DataAccess();
             try
             {
                 da.setConsulta("delete articulos where codigo = @Codigo");
-                da.setConsultaWhitParameters("@Codigo", delete);
+                da.setConsultaWhitParameters("@Codigo",del);
                 da.executeAction();
                 return da.getLineCantAfected();
             }
@@ -199,6 +214,30 @@ namespace services
             finally
             {
                 response.closeConnection();
+            }
+        }
+
+        public void editProduct (Product edit)
+        {
+            DataAccess da = new DataAccess();
+            try
+            {
+                da.setConsulta("Update ARTICULOS set Codigo=@Codigo,Nombre=@Nombre,Descripcion=@Descripcion,ImagenUrl=@Imagen,IdMarca=@idmarca,IdCategoria=@idcategoria,Precio=@precio where Id=@id");
+                da.setConsultaWhitParameters("@Codigo",edit.codArticulo);
+                da.setConsultaWhitParameters("@Nombre",edit.Nombre);
+                da.setConsultaWhitParameters("@Descripcion",edit.Descripcion);
+                da.setConsultaWhitParameters("@Imagen",edit.urlImagen);
+                da.setConsultaWhitParameters("@idmarca",edit.Marca.IdComercialBrand);
+                da.setConsultaWhitParameters("@idcategoria",edit.Categoria.IdCategory);
+                da.setConsultaWhitParameters("@precio",edit.Precio);
+                da.setConsultaWhitParameters("@id", edit.Id);
+
+                da.executeAction();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

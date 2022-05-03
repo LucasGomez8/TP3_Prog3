@@ -23,7 +23,7 @@ namespace services
             command.CommandText = e;
         }
 
-        public void setConsultaWhitParameters(string parameter, String e)
+        public void setConsultaWhitParameters(string parameter, object e)
         {
 
             command.Parameters.AddWithValue(parameter, e);
