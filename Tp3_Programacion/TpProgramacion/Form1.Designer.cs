@@ -82,6 +82,7 @@ namespace TpProgramacion
             this.Controls.Add(this.lblTitulo);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos Locos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.ResumeLayout(false);
