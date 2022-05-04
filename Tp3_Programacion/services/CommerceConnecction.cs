@@ -140,13 +140,14 @@ namespace services
             }
 
         }
-        public void addProduct(Product adding)
+        public int addProduct(Product adding)
         {
             DataAccess da = new DataAccess();
             try
             {
                 da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "'," + adding.Marca.IdComercialBrand + "," + adding.Categoria.IdCategory + ",'" + adding.urlImagen + "'," + adding.Precio + ")");
                 da.executeAction();
+                return da.getLineCantAfected();
             }
             catch (Exception ex)
             {
@@ -215,7 +216,7 @@ namespace services
             }
         }
 
-        public void editProduct (Product edit)
+        public int editProduct (Product edit)
         {
             DataAccess da = new DataAccess();
             try
@@ -232,6 +233,7 @@ namespace services
                 da.setConsultaWhitParameters("@id", edit.Id);
 
                 da.executeAction();
+                return da.getLineCantAfected();
             }
             catch (Exception)
             {

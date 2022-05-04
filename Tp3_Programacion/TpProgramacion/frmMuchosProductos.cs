@@ -61,7 +61,7 @@ namespace TpProgramacion
 
         private void btnAgregar_Todos_Click(object sender, EventArgs e)
         {
-            frmNuevoProducto nuevop = new frmNuevoProducto();
+            frmNuevoProducto nuevop = new frmNuevoProducto(null);
             nuevop.ShowDialog();
             load();
         }

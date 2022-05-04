@@ -10,52 +10,31 @@ namespace TpProgramacion
     {
 
         private Product product = null;
-        public frmNuevoProducto()
-        {
-            InitializeComponent();
-            Text = "Nuevo Producto";
-        }
 
         public frmNuevoProducto(Product edit)
         {
             InitializeComponent();
             this.product = edit;
-            Text = "Modificar Producto";
+            if (product != null)
+            {
+                Text = "Modificar Producto";
+            } 
+            else
+            {
+                Text = "Nuevo Producto";
+            }
         }
 
         private void btnAgregar__Nuevo_Click(object sender, EventArgs e)
         {
-            CommerceConnecction CC = new CommerceConnecction();
             try
             {
-                if (product == null) product = new Product();
-
-                product.codArticulo = txtCodigo__Nuevo.Text;
-                product.Nombre = txtNombre__Nuevo.Text;
-                product.Descripcion = txtDescripcion__Nuevo.Text;
-                product.Marca = new ComercialBrand();
-                string idCommercialBrand = cbMarca_Nuevo.SelectedValue.ToString();
-                product.Marca.IdComercialBrand = Convert.ToInt32(idCommercialBrand);
-                product.Categoria = new Category();
-                string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
-                product.Categoria.IdCategory = Convert.ToInt32(idCategory);
-                product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
-                product.urlImagen = txtUrlImagen_Nuevo.Text;
+                prepareRequest();
 
                 if (product.Id != 0)
-                {
-                    CC.editProduct(product);
-                    MessageBox.Show("Se ha Modificado con exito");
-                    Close();
-                }
+                    onEdit();
                 else
-                {
-                    CC.addProduct(product);
-                    MessageBox.Show("Se ha cargado el producto con exito");
-                    Close();
-                }
-                
-
+                    onAdd();
                
             }
             catch (Exception)
@@ -68,6 +47,41 @@ namespace TpProgramacion
 
         private void frmNuevoProducto_Load(object sender, EventArgs e)
         {
+            setComboBoxes();
+            if (product != null)
+                setDataProduct(product);
+          
+        }
+
+        private void checkInputOnlyNumber(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && 
+                !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.') &&
+                (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            //string point = "";
+            TextBox txtBox = (TextBox)sender;
+            // only allow one decimal point
+            if ((e.KeyChar == '.') || (e.KeyChar == ','))
+            {
+                if ((txtBox.Text.IndexOf('.') > -1) ||
+                (txtBox.Text.IndexOf(',') > -1))
+                {
+                    e.Handled = true;
+                }
+            }
+            
+            //int idxPoint = (sender as TextBox).Text.IndexOf(point);
+            //if (idxPoint + 3 >= txtBox.Text.Length) e.Handled = true;
+            
+        }
+
+        private void setComboBoxes()
+        {
             CommerceConnecction CC = new CommerceConnecction();
             DataTable comercialBrands = CC.getConfigFromDB("Marcas");
             DataTable categories = CC.getConfigFromDB("Categorias");
@@ -78,47 +92,65 @@ namespace TpProgramacion
             cbCategoria_Nuevo.DataSource = categories;
             cbCategoria_Nuevo.DisplayMember = "descripcion";
             cbCategoria_Nuevo.ValueMember = "id";
-
-            if (product != null)
-            {
-                txtCodigo__Nuevo.Text = product.codArticulo;
-                txtCodigo__Nuevo.ReadOnly = true;
-                txtNombre__Nuevo.Text = product.Nombre;
-                txtDescripcion__Nuevo.Text = product.Descripcion;
-                txtUrlImagen_Nuevo.Text = product.urlImagen;
-                txtPrecio_Nuevo.Text = product.Precio.ToString() ;
-                cbMarca_Nuevo.SelectedValue = product.Marca.IdComercialBrand;
-                cbCategoria_Nuevo.SelectedValue = product.Categoria.IdCategory;
-            }
-          
         }
 
-        private void txtPrecio_Nuevo_KeyPress(object sender, KeyPressEventArgs e)
+        private void setDataProduct(Product showProduct)
         {
-            if (!char.IsControl(e.KeyChar) && 
-                !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.') &&
-                (e.KeyChar != ','))
-            {
-                e.Handled = true;
-            }
+            txtCodigo__Nuevo.Text = showProduct.codArticulo;
+            txtCodigo__Nuevo.ReadOnly = true;
+            txtNombre__Nuevo.Text = showProduct.Nombre;
+            txtDescripcion__Nuevo.Text = showProduct.Descripcion;
+            txtUrlImagen_Nuevo.Text = showProduct.urlImagen;
+            txtPrecio_Nuevo.Text = showProduct.Precio.ToString();
+            cbMarca_Nuevo.SelectedValue = showProduct.Marca.IdComercialBrand;
+            cbCategoria_Nuevo.SelectedValue = showProduct.Categoria.IdCategory;
 
-            string point = "";
-            TextBox txtBox = (TextBox)sender;
-            // only allow one decimal point
-            if ((e.KeyChar == '.') || (e.KeyChar == ','))
-            {
-                if ((txtBox.Text.IndexOf('.') > -1) ||
-                (txtBox.Text.IndexOf(',') > -1))
-                {
-                    e.Handled = true;
-                }
+        }
 
-            }
+        private void prepareRequest()
+        {
+            if (product == null) product = new Product();
+
+            product.codArticulo = txtCodigo__Nuevo.Text;
+            product.Nombre = txtNombre__Nuevo.Text;
+            product.Descripcion = txtDescripcion__Nuevo.Text;
+            product.Marca = new ComercialBrand();
+            string idCommercialBrand = cbMarca_Nuevo.SelectedValue.ToString();
+            product.Marca.IdComercialBrand = Convert.ToInt32(idCommercialBrand);
+            product.Categoria = new Category();
+            string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
+            product.Categoria.IdCategory = Convert.ToInt32(idCategory);
+            product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
+            product.urlImagen = txtUrlImagen_Nuevo.Text;
+        }
+
+        private void onEdit()
+        {
+            CommerceConnecction CC = new CommerceConnecction();
+
+            if (CC.editProduct(product) != 0)
+                MessageBox.Show("Se ha Modificado con exito");
+            else
+                MessageBox.Show("No se pudo modificar el articulo");
+
+            Close();
+        }
+
+        private void onAdd()
+        {
+            CommerceConnecction CC = new CommerceConnecction();
             
-            //int idxPoint = (sender as TextBox).Text.IndexOf(point);
-            //if (idxPoint + 3 >= txtBox.Text.Length) e.Handled = true;
-            
+            if (CC.addProduct(product) != 0)
+                MessageBox.Show("Se ha agregado el articulo con exito");
+            else
+                MessageBox.Show("No se pudo modificar el articulo");
+
+            Close();
+        }
+
+        private void btnCancelar__Nuevo_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
