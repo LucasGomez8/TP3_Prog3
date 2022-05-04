@@ -29,12 +29,10 @@ namespace TpProgramacion
                 dvgTodosLosProductos.DataSource = productlist;
                 dvgTodosLosProductos.Columns["UrlImagen"].Visible = false;
                 dvgTodosLosProductos.Columns["Id"].Visible = false;
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Ocurrio un error al cargar el listado de articulos.", "Te pedimos disculpas");
             }
         }
 
@@ -51,7 +49,6 @@ namespace TpProgramacion
             }
             catch (Exception)
             {
-
                 pbxTodos.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
             }
             
