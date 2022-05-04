@@ -86,12 +86,18 @@ namespace TpProgramacion
             DataTable comercialBrands = CC.getConfigFromDB("Marcas");
             DataTable categories = CC.getConfigFromDB("Categorias");
 
-            cbMarca_Nuevo.DataSource = comercialBrands;
-            cbMarca_Nuevo.DisplayMember = "descripcion";
-            cbMarca_Nuevo.ValueMember = "id";
-            cbCategoria_Nuevo.DataSource = categories;
-            cbCategoria_Nuevo.DisplayMember = "descripcion";
-            cbCategoria_Nuevo.ValueMember = "id";
+            if (comercialBrands != null)
+            {
+                cbMarca_Nuevo.DataSource = comercialBrands;
+                cbMarca_Nuevo.DisplayMember = "descripcion";
+                cbMarca_Nuevo.ValueMember = "id";
+            }
+            if (categories != null)
+            {
+                cbCategoria_Nuevo.DataSource = categories;
+                cbCategoria_Nuevo.DisplayMember = "descripcion";
+                cbCategoria_Nuevo.ValueMember = "id";
+            }
         }
 
         private void setDataProduct(Product showProduct)

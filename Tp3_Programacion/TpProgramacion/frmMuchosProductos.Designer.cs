@@ -165,6 +165,7 @@ namespace TpProgramacion
             this.cboOrdenPrice__Todos.Name = "cboOrdenPrice__Todos";
             this.cboOrdenPrice__Todos.Size = new System.Drawing.Size(200, 21);
             this.cboOrdenPrice__Todos.TabIndex = 12;
+            this.cboOrdenPrice__Todos.DropDownClosed += new System.EventHandler(this.cboOrdenPrice__Todos_DropDownClosed);
             // 
             // panel2
             // 
@@ -175,7 +176,7 @@ namespace TpProgramacion
             this.panel2.Controls.Add(this.lblMarca__muchos);
             this.panel2.Controls.Add(this.cboMarca__Todos);
             this.panel2.Location = new System.Drawing.Point(15, 288);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(749, 69);
             this.panel2.TabIndex = 15;
@@ -219,7 +220,7 @@ namespace TpProgramacion
             this.Controls.Add(this.btnBorrar__Todos);
             this.Controls.Add(this.btnEditar__Todos);
             this.Controls.Add(this.btnAgregar_Todos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1151, 495);
             this.MinimumSize = new System.Drawing.Size(1151, 495);

@@ -2,6 +2,7 @@
 using services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using TpProgramacion.services;
 
@@ -12,7 +13,7 @@ namespace TpProgramacion
 
         private List<Product> productlist;
 
-        Product select;
+        private Product productSelected;
 
         public frmMuchosProductos()
         {
@@ -30,16 +31,84 @@ namespace TpProgramacion
             try
             {
                 productlist = cc.listarProducto();
-                dvgTodosLosProductos.DataSource = productlist;
-                dvgTodosLosProductos.Columns["UrlImagen"].Visible = false;
-                dvgTodosLosProductos.Columns["Id"].Visible = false;
+                setComboBoxes();
+                setup();       
             }
             catch (Exception)
             {
-                MessageBox.Show("Ocurrio un error al cargar el listado de articulos.", "Te pedimos disculpas");
+                MessageBox.Show("Ocurrio un error al cargar el listado de articulos.", 
+                    "Te pedimos disculpas");
             }
         }
-        
+
+        private void setup()
+        {
+            dvgTodosLosProductos.DataSource = productlist;
+            dvgTodosLosProductos.Refresh();
+            dvgTodosLosProductos.Columns["UrlImagen"].Visible = false;
+            dvgTodosLosProductos.Columns["Id"].Visible = false;
+        }
+
+        private void setComboBoxes()
+        {
+            CommerceConnecction CC = new CommerceConnecction();
+            DataTable comercialBrands = CC.getConfigFromDB("Marcas");
+            DataTable categories = CC.getConfigFromDB("Categorias");
+            
+            if (comercialBrands != null)
+            {
+                cboMarca__Todos.DataSource = comercialBrands;
+                cboMarca__Todos.DisplayMember = "descripcion";
+                cboMarca__Todos.ValueMember = "id";
+            }
+            if (categories != null)
+            {
+                cboCategoria__Todos.DataSource = categories;
+                cboCategoria__Todos.DisplayMember = "descripcion";
+                cboCategoria__Todos.ValueMember = "id";
+            }
+
+            List<string> priceOrder = new List<string>();
+            priceOrder.Add("Ascendente");
+            priceOrder.Add("Descendente");
+            cboOrdenPrice__Todos.DataSource = priceOrder;
+        }
+
+        private void orderList(bool asc)
+        {
+            if (asc)
+            {
+                for (int i = 0; i < productlist.Count; i++)
+                {
+                    for (int x = 0; x < productlist.Count; x++)
+                    {
+                        if (productlist[i].Precio < productlist[x].Precio)
+                        {
+                            Product aux = productlist[i];
+                            productlist[i] = productlist[x];
+                            productlist[x] = aux;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < productlist.Count; i++)
+                {
+                    for (int x = 0; x < productlist.Count; x++)
+                    {
+                        if (productlist[i].Precio > productlist[x].Precio)
+                        {
+                            Product aux = productlist[i];
+                            productlist[i] = productlist[x];
+                            productlist[x] = aux;
+                        }
+                    }
+                }
+            }
+            
+            setup();
+        }
         public void imageLoad(string img)
         {
             try
@@ -55,8 +124,8 @@ namespace TpProgramacion
 
         private void dvgTodosLosProductos_SelectionChanged(object sender, EventArgs e)
         {
-            select = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
-            imageLoad(select.urlImagen);
+            productSelected = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
+            imageLoad(productSelected.urlImagen);
         }
 
         private void btnAgregar_Todos_Click(object sender, EventArgs e)
@@ -68,7 +137,7 @@ namespace TpProgramacion
 
         private void btnEditar__Todos_Click(object sender, EventArgs e)
         {
-            frmNuevoProducto edit = new frmNuevoProducto(select);
+            frmNuevoProducto edit = new frmNuevoProducto(productSelected);
             edit.ShowDialog();
             load();
         }
@@ -85,30 +154,44 @@ namespace TpProgramacion
 
                 if (response==DialogResult.Yes)
                 {
-                    if (cc.deleteProduct(select.codArticulo) > 0)
+                    if (cc.deleteProduct(productSelected.codArticulo) > 0)
                     {
                         MessageBox.Show("Eliminado Exitosamente");
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrio un error al eliminar");
+                        MessageBox.Show("No se pudo borrar el articulo");
                     }
                 }
                 
                 load();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ocurrio un error al eliminar el articulo");
             }
 
         }
 
         private void btnVerDetalle__Todos_Click(object sender, EventArgs e)
         {
-            frmOnlyProduct onlyp = new frmOnlyProduct(select);
+            frmOnlyProduct onlyp = new frmOnlyProduct(productSelected);
             onlyp.ShowDialog();
             load();
+        }
+
+        private void cboOrdenPrice__Todos_DropDownClosed(object sender, EventArgs e)
+        {
+            int orderSelected = cboOrdenPrice__Todos.SelectedIndex;
+
+            if (orderSelected == 0)
+            {
+                orderList(true);
+            }
+            else
+            {
+                orderList(false);
+            }
         }
     }
 }
