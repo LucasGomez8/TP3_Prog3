@@ -8,12 +8,12 @@ namespace TpProgramacion.services
     public partial class frmOnlyProduct : Form
     {
 
-        private Product productoBuscado;
+        private Product productoBuscado = null;
 
-        public frmOnlyProduct()
+        public frmOnlyProduct(Product product)
         {
             InitializeComponent();
-            Text = "Busqueda Especifica";
+            this.productoBuscado = product;
         }
 
         public void imageLoad(string e)
@@ -36,11 +36,7 @@ namespace TpProgramacion.services
 
             if (productoBuscado != null)
             {
-                lblR1__only.Text = productoBuscado.codArticulo;
-                lblR2__only.Text = productoBuscado.Nombre;
-                lblR4__only.Text = productoBuscado.Precio.ToString();
-                lblR5__only.Text = productoBuscado.Marca.Description;
-                imageLoad(productoBuscado.urlImagen);
+                showInfoProduct(productoBuscado);
             }
             else
             {
@@ -56,11 +52,7 @@ namespace TpProgramacion.services
 
             if (productoBuscado != null)
             {
-                lblR1__only.Text = productoBuscado.codArticulo;
-                lblR2__only.Text = productoBuscado.Nombre;
-                lblR4__only.Text = productoBuscado.Precio.ToString();
-                lblR5__only.Text = productoBuscado.Marca.Description;
-                imageLoad(productoBuscado.urlImagen);
+                showInfoProduct(productoBuscado);
             }
             else
             {
@@ -71,7 +63,17 @@ namespace TpProgramacion.services
 
         private void frmOnlyProduct_Load(object sender, EventArgs e)
         {
-            productoBuscado = null;
+            if (productoBuscado != null)
+            {
+                Text = "Detalles del Articulo";
+                pnlBuscar.Visible = false;
+                btnAgregar__only.Visible = false;
+                showInfoProduct(productoBuscado);
+            }
+            else
+            {
+                Text = "Buscar Articulo";
+            }
         }
 
         private void btnAgregar__only_Click(object sender, EventArgs e)
@@ -110,8 +112,13 @@ namespace TpProgramacion.services
 
         }
 
-        private void pbxImagen__only_Click(object sender, EventArgs e)
+        private void showInfoProduct(Product showProduct)
         {
+            lblR1__only.Text = showProduct.codArticulo;
+            lblR2__only.Text = showProduct.Nombre;
+            lblR4__only.Text = showProduct.Precio.ToString();
+            lblR5__only.Text = showProduct.Marca.Description;
+            imageLoad(showProduct.urlImagen);
 
         }
     }

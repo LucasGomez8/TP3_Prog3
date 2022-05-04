@@ -146,6 +146,7 @@ namespace TpProgramacion
             this.btnVerDetalle__Todos.TabIndex = 11;
             this.btnVerDetalle__Todos.Text = "Ver Detalle";
             this.btnVerDetalle__Todos.UseVisualStyleBackColor = true;
+            this.btnVerDetalle__Todos.Click += new System.EventHandler(this.btnVerDetalle__Todos_Click);
             // 
             // lblOrden__todos
             // 
@@ -191,7 +192,6 @@ namespace TpProgramacion
             this.dvgTodosLosProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgTodosLosProductos.Size = new System.Drawing.Size(692, 234);
             this.dvgTodosLosProductos.TabIndex = 4;
-            this.dvgTodosLosProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgTodosLosProductos_CellContentClick);
             this.dvgTodosLosProductos.SelectionChanged += new System.EventHandler(this.dvgTodosLosProductos_SelectionChanged);
             // 
             // pbxTodos

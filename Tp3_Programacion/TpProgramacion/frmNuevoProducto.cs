@@ -63,8 +63,6 @@ namespace TpProgramacion
 
                 MessageBox.Show("Ocurrio un error al cargar el producto.");
             }
-            
-
 
         }
 

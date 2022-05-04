@@ -3,6 +3,7 @@ using services;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using TpProgramacion.services;
 
 namespace TpProgramacion
 {
@@ -10,6 +11,9 @@ namespace TpProgramacion
     {
 
         private List<Product> productlist;
+
+        Product select;
+
         public frmMuchosProductos()
         {
             InitializeComponent();
@@ -35,11 +39,6 @@ namespace TpProgramacion
                 MessageBox.Show("Ocurrio un error al cargar el listado de articulos.", "Te pedimos disculpas");
             }
         }
-
-        private void dvgTodosLosProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         
         public void imageLoad(string img)
         {
@@ -56,7 +55,6 @@ namespace TpProgramacion
 
         private void dvgTodosLosProductos_SelectionChanged(object sender, EventArgs e)
         {
-            Product select;
             select = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
             imageLoad(select.urlImagen);
         }
@@ -70,8 +68,6 @@ namespace TpProgramacion
 
         private void btnEditar__Todos_Click(object sender, EventArgs e)
         {
-            Product select;
-            select = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
             frmNuevoProducto edit = new frmNuevoProducto(select);
             edit.ShowDialog();
             load();
@@ -79,12 +75,13 @@ namespace TpProgramacion
 
         private void btnBorrar__Todos_Click(object sender, EventArgs e)
         {
-            Product select;
             CommerceConnecction cc = new CommerceConnecction();
             try
             {
-                DialogResult response = MessageBox.Show("¿Realmente quiere eliminar el producto?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                select = (Product)dvgTodosLosProductos.CurrentRow.DataBoundItem;
+                DialogResult response = MessageBox.Show("¿Realmente quiere eliminar el producto?", 
+                    "Eliminar Producto", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning);
 
                 if (response==DialogResult.Yes)
                 {
@@ -105,6 +102,13 @@ namespace TpProgramacion
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void btnVerDetalle__Todos_Click(object sender, EventArgs e)
+        {
+            frmOnlyProduct onlyp = new frmOnlyProduct(select);
+            onlyp.ShowDialog();
+            load();
         }
     }
 }

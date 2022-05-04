@@ -47,7 +47,11 @@ namespace TpProgramacion.services
             this.btnAgregar__only = new System.Windows.Forms.Button();
             this.btnEditar__only = new System.Windows.Forms.Button();
             this.btnBorrar__only = new System.Windows.Forms.Button();
+            this.pnlBuscar = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen__only)).BeginInit();
+            this.pnlBuscar.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbxImagen__only
@@ -62,12 +66,11 @@ namespace TpProgramacion.services
             this.pbxImagen__only.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagen__only.TabIndex = 0;
             this.pbxImagen__only.TabStop = false;
-            this.pbxImagen__only.Click += new System.EventHandler(this.pbxImagen__only_Click);
             // 
             // lblNombre__only
             // 
             this.lblNombre__only.AutoSize = true;
-            this.lblNombre__only.Location = new System.Drawing.Point(75, 245);
+            this.lblNombre__only.Location = new System.Drawing.Point(19, 43);
             this.lblNombre__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNombre__only.Name = "lblNombre__only";
             this.lblNombre__only.Size = new System.Drawing.Size(47, 13);
@@ -77,7 +80,7 @@ namespace TpProgramacion.services
             // lblCodigo__only
             // 
             this.lblCodigo__only.AutoSize = true;
-            this.lblCodigo__only.Location = new System.Drawing.Point(75, 212);
+            this.lblCodigo__only.Location = new System.Drawing.Point(19, 10);
             this.lblCodigo__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCodigo__only.Name = "lblCodigo__only";
             this.lblCodigo__only.Size = new System.Drawing.Size(103, 13);
@@ -87,7 +90,7 @@ namespace TpProgramacion.services
             // lblPrecio__only
             // 
             this.lblPrecio__only.AutoSize = true;
-            this.lblPrecio__only.Location = new System.Drawing.Point(256, 212);
+            this.lblPrecio__only.Location = new System.Drawing.Point(200, 10);
             this.lblPrecio__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrecio__only.Name = "lblPrecio__only";
             this.lblPrecio__only.Size = new System.Drawing.Size(40, 13);
@@ -97,7 +100,7 @@ namespace TpProgramacion.services
             // lblMarca__only
             // 
             this.lblMarca__only.AutoSize = true;
-            this.lblMarca__only.Location = new System.Drawing.Point(254, 245);
+            this.lblMarca__only.Location = new System.Drawing.Point(198, 43);
             this.lblMarca__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMarca__only.Name = "lblMarca__only";
             this.lblMarca__only.Size = new System.Drawing.Size(43, 13);
@@ -106,7 +109,7 @@ namespace TpProgramacion.services
             // 
             // btnCodigo__only
             // 
-            this.btnCodigo__only.Location = new System.Drawing.Point(431, 61);
+            this.btnCodigo__only.Location = new System.Drawing.Point(9, 41);
             this.btnCodigo__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnCodigo__only.Name = "btnCodigo__only";
             this.btnCodigo__only.Size = new System.Drawing.Size(122, 40);
@@ -118,7 +121,7 @@ namespace TpProgramacion.services
             // lblBCodigo__only
             // 
             this.lblBCodigo__only.AutoSize = true;
-            this.lblBCodigo__only.Location = new System.Drawing.Point(429, 22);
+            this.lblBCodigo__only.Location = new System.Drawing.Point(7, 2);
             this.lblBCodigo__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBCodigo__only.Name = "lblBCodigo__only";
             this.lblBCodigo__only.Size = new System.Drawing.Size(94, 13);
@@ -127,7 +130,7 @@ namespace TpProgramacion.services
             // 
             // txtBCodigo
             // 
-            this.txtBCodigo.Location = new System.Drawing.Point(431, 38);
+            this.txtBCodigo.Location = new System.Drawing.Point(9, 18);
             this.txtBCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtBCodigo.Name = "txtBCodigo";
             this.txtBCodigo.Size = new System.Drawing.Size(122, 20);
@@ -136,7 +139,7 @@ namespace TpProgramacion.services
             // lblR1__only
             // 
             this.lblR1__only.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.lblR1__only.Location = new System.Drawing.Point(182, 212);
+            this.lblR1__only.Location = new System.Drawing.Point(126, 10);
             this.lblR1__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblR1__only.Name = "lblR1__only";
             this.lblR1__only.Size = new System.Drawing.Size(70, 14);
@@ -145,7 +148,7 @@ namespace TpProgramacion.services
             // lblR2__only
             // 
             this.lblR2__only.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.lblR2__only.Location = new System.Drawing.Point(126, 245);
+            this.lblR2__only.Location = new System.Drawing.Point(70, 43);
             this.lblR2__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblR2__only.Name = "lblR2__only";
             this.lblR2__only.Size = new System.Drawing.Size(117, 14);
@@ -154,7 +157,7 @@ namespace TpProgramacion.services
             // lblR4__only
             // 
             this.lblR4__only.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.lblR4__only.Location = new System.Drawing.Point(299, 212);
+            this.lblR4__only.Location = new System.Drawing.Point(243, 10);
             this.lblR4__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblR4__only.Name = "lblR4__only";
             this.lblR4__only.Size = new System.Drawing.Size(94, 13);
@@ -163,7 +166,7 @@ namespace TpProgramacion.services
             // lblR5__only
             // 
             this.lblR5__only.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.lblR5__only.Location = new System.Drawing.Point(299, 245);
+            this.lblR5__only.Location = new System.Drawing.Point(243, 43);
             this.lblR5__only.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblR5__only.Name = "lblR5__only";
             this.lblR5__only.Size = new System.Drawing.Size(94, 14);
@@ -171,7 +174,7 @@ namespace TpProgramacion.services
             // 
             // txtBNombre
             // 
-            this.txtBNombre.Location = new System.Drawing.Point(431, 135);
+            this.txtBNombre.Location = new System.Drawing.Point(9, 115);
             this.txtBNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtBNombre.Name = "txtBNombre";
             this.txtBNombre.Size = new System.Drawing.Size(122, 20);
@@ -180,7 +183,7 @@ namespace TpProgramacion.services
             // lblBNombre
             // 
             this.lblBNombre.AutoSize = true;
-            this.lblBNombre.Location = new System.Drawing.Point(429, 119);
+            this.lblBNombre.Location = new System.Drawing.Point(7, 99);
             this.lblBNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBNombre.Name = "lblBNombre";
             this.lblBNombre.Size = new System.Drawing.Size(98, 13);
@@ -189,7 +192,7 @@ namespace TpProgramacion.services
             // 
             // btnNombre__only
             // 
-            this.btnNombre__only.Location = new System.Drawing.Point(431, 158);
+            this.btnNombre__only.Location = new System.Drawing.Point(9, 138);
             this.btnNombre__only.Margin = new System.Windows.Forms.Padding(2);
             this.btnNombre__only.Name = "btnNombre__only";
             this.btnNombre__only.Size = new System.Drawing.Size(122, 40);
@@ -200,7 +203,7 @@ namespace TpProgramacion.services
             // 
             // btnAgregar__only
             // 
-            this.btnAgregar__only.Location = new System.Drawing.Point(77, 314);
+            this.btnAgregar__only.Location = new System.Drawing.Point(20, 316);
             this.btnAgregar__only.Name = "btnAgregar__only";
             this.btnAgregar__only.Size = new System.Drawing.Size(100, 29);
             this.btnAgregar__only.TabIndex = 17;
@@ -210,7 +213,7 @@ namespace TpProgramacion.services
             // 
             // btnEditar__only
             // 
-            this.btnEditar__only.Location = new System.Drawing.Point(259, 314);
+            this.btnEditar__only.Location = new System.Drawing.Point(202, 316);
             this.btnEditar__only.Name = "btnEditar__only";
             this.btnEditar__only.Size = new System.Drawing.Size(100, 29);
             this.btnEditar__only.TabIndex = 18;
@@ -220,7 +223,7 @@ namespace TpProgramacion.services
             // 
             // btnBorrar__only
             // 
-            this.btnBorrar__only.Location = new System.Drawing.Point(432, 314);
+            this.btnBorrar__only.Location = new System.Drawing.Point(375, 316);
             this.btnBorrar__only.Name = "btnBorrar__only";
             this.btnBorrar__only.Size = new System.Drawing.Size(100, 29);
             this.btnBorrar__only.TabIndex = 19;
@@ -228,37 +231,56 @@ namespace TpProgramacion.services
             this.btnBorrar__only.UseVisualStyleBackColor = true;
             this.btnBorrar__only.Click += new System.EventHandler(this.btnBorrar__only_Click);
             // 
+            // pnlBuscar
+            // 
+            this.pnlBuscar.Controls.Add(this.txtBNombre);
+            this.pnlBuscar.Controls.Add(this.lblBNombre);
+            this.pnlBuscar.Controls.Add(this.btnNombre__only);
+            this.pnlBuscar.Controls.Add(this.txtBCodigo);
+            this.pnlBuscar.Controls.Add(this.lblBCodigo__only);
+            this.pnlBuscar.Controls.Add(this.btnCodigo__only);
+            this.pnlBuscar.Location = new System.Drawing.Point(423, 9);
+            this.pnlBuscar.Name = "pnlBuscar";
+            this.pnlBuscar.Size = new System.Drawing.Size(140, 190);
+            this.pnlBuscar.TabIndex = 20;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblR5__only);
+            this.panel2.Controls.Add(this.lblR4__only);
+            this.panel2.Controls.Add(this.lblR2__only);
+            this.panel2.Controls.Add(this.lblR1__only);
+            this.panel2.Controls.Add(this.lblMarca__only);
+            this.panel2.Controls.Add(this.lblPrecio__only);
+            this.panel2.Controls.Add(this.lblCodigo__only);
+            this.panel2.Controls.Add(this.lblNombre__only);
+            this.panel2.Location = new System.Drawing.Point(62, 217);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(361, 68);
+            this.panel2.TabIndex = 21;
+            // 
             // frmOnlyProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(586, 366);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.btnBorrar__only);
             this.Controls.Add(this.btnEditar__only);
             this.Controls.Add(this.btnAgregar__only);
-            this.Controls.Add(this.txtBNombre);
-            this.Controls.Add(this.lblBNombre);
-            this.Controls.Add(this.btnNombre__only);
-            this.Controls.Add(this.lblR5__only);
-            this.Controls.Add(this.lblR4__only);
-            this.Controls.Add(this.lblR2__only);
-            this.Controls.Add(this.lblR1__only);
-            this.Controls.Add(this.txtBCodigo);
-            this.Controls.Add(this.lblBCodigo__only);
-            this.Controls.Add(this.btnCodigo__only);
-            this.Controls.Add(this.lblMarca__only);
-            this.Controls.Add(this.lblPrecio__only);
-            this.Controls.Add(this.lblCodigo__only);
-            this.Controls.Add(this.lblNombre__only);
             this.Controls.Add(this.pbxImagen__only);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmOnlyProduct";
             this.Text = "frmOnlyProduct";
             this.Load += new System.EventHandler(this.frmOnlyProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen__only)).EndInit();
+            this.pnlBuscar.ResumeLayout(false);
+            this.pnlBuscar.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -282,5 +304,7 @@ namespace TpProgramacion.services
         private System.Windows.Forms.Button btnAgregar__only;
         private System.Windows.Forms.Button btnEditar__only;
         private System.Windows.Forms.Button btnBorrar__only;
+        private System.Windows.Forms.Panel pnlBuscar;
+        private System.Windows.Forms.Panel panel2;
     }
 }

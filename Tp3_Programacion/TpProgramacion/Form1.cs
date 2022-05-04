@@ -24,7 +24,7 @@ namespace TpProgramacion
 
         private void btnOnlyProduct_Click(object sender, EventArgs e)
         {
-            frmOnlyProduct onlyp = new frmOnlyProduct();
+            frmOnlyProduct onlyp = new frmOnlyProduct(null);
             onlyp.ShowDialog();
         }
 
