@@ -188,6 +188,10 @@ namespace services
             DataAccess response = new DataAccess();
             data.Columns.Add("id");
             data.Columns.Add("descripcion");
+            DataRow none = data.NewRow();
+            none["id"] = 0;
+            none["descripcion"] = "Todos";
+            data.Rows.Add(none);
 
             try
             {
@@ -196,8 +200,8 @@ namespace services
 
                 while (response.dataReader.Read())
                 {
-                    DataRow row = data.NewRow();
 
+                    DataRow row = data.NewRow();
                     row["id"] = (int)response.dataReader["id"];
                     row["descripcion"] = (string)response.dataReader["descripcion"];
 

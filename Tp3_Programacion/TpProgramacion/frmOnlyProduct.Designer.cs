@@ -59,7 +59,7 @@ namespace TpProgramacion.services
             this.pbxImagen__only.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pbxImagen__only.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxImagen__only.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxImagen__only.Location = new System.Drawing.Point(140, 11);
+            this.pbxImagen__only.Location = new System.Drawing.Point(135, 11);
             this.pbxImagen__only.Margin = new System.Windows.Forms.Padding(2);
             this.pbxImagen__only.Name = "pbxImagen__only";
             this.pbxImagen__only.Size = new System.Drawing.Size(219, 188);

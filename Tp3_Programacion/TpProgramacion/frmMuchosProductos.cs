@@ -13,6 +13,7 @@ namespace TpProgramacion
 
         private List<Product> productlist;
 
+
         private Product productSelected;
 
         public frmMuchosProductos()
@@ -41,6 +42,30 @@ namespace TpProgramacion
             }
         }
 
+        private void filterLoad(int e, bool itsBrand)
+        {
+
+            List<Product> filter = new List<Product>();
+            foreach (Product items in productlist)
+            {
+                if (itsBrand)
+                {
+                    if (items.Marca.IdComercialBrand == e)
+                    {
+                        filter.Add(items);
+                    }
+                }
+                else
+                {
+                    if (items.Categoria.IdCategory == e)
+                    {
+                        filter.Add(items);
+                    }
+                }    
+            }
+            dvgTodosLosProductos.DataSource = filter;
+        }
+
         private void setup()
         {
             dvgTodosLosProductos.DataSource = productlist;
@@ -60,6 +85,7 @@ namespace TpProgramacion
                 cboMarca__Todos.DataSource = comercialBrands;
                 cboMarca__Todos.DisplayMember = "descripcion";
                 cboMarca__Todos.ValueMember = "id";
+                
             }
             if (categories != null)
             {
@@ -191,6 +217,34 @@ namespace TpProgramacion
             else
             {
                 orderList(false);
+            }
+        }
+
+        private void cboMarca__Todos_DropDownClosed(object sender, EventArgs e)
+        {
+            int brandSelected = cboMarca__Todos.SelectedIndex;
+            
+            if(brandSelected == 0)
+            {
+                load();
+            }
+            else
+            {
+                filterLoad(brandSelected,true);
+            }
+        }
+
+        private void cboCategoria__Todos_DropDownClosed(object sender, EventArgs e)
+        {
+            int categorySelected = cboCategoria__Todos.SelectedIndex;
+            
+            if(categorySelected == 0)
+            {
+                load();
+            }
+            else
+            {
+                filterLoad(categorySelected,false);
             }
         }
     }

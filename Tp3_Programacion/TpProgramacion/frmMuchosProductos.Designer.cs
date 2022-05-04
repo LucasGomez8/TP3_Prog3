@@ -59,6 +59,7 @@ namespace TpProgramacion
             this.cboMarca__Todos.Name = "cboMarca__Todos";
             this.cboMarca__Todos.Size = new System.Drawing.Size(200, 21);
             this.cboMarca__Todos.TabIndex = 2;
+            this.cboMarca__Todos.DropDownClosed += new System.EventHandler(this.cboMarca__Todos_DropDownClosed);
             // 
             // lblMarca__muchos
             // 
@@ -92,32 +93,35 @@ namespace TpProgramacion
             // 
             // btnAgregar_Todos
             // 
+            this.btnAgregar_Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnAgregar_Todos.Location = new System.Drawing.Point(15, 390);
             this.btnAgregar_Todos.Name = "btnAgregar_Todos";
             this.btnAgregar_Todos.Size = new System.Drawing.Size(136, 35);
             this.btnAgregar_Todos.TabIndex = 6;
             this.btnAgregar_Todos.Text = "Agregar";
-            this.btnAgregar_Todos.UseVisualStyleBackColor = true;
+            this.btnAgregar_Todos.UseVisualStyleBackColor = false;
             this.btnAgregar_Todos.Click += new System.EventHandler(this.btnAgregar_Todos_Click);
             // 
             // btnEditar__Todos
             // 
+            this.btnEditar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnEditar__Todos.Location = new System.Drawing.Point(194, 390);
             this.btnEditar__Todos.Name = "btnEditar__Todos";
             this.btnEditar__Todos.Size = new System.Drawing.Size(136, 35);
             this.btnEditar__Todos.TabIndex = 7;
             this.btnEditar__Todos.Text = "Editar";
-            this.btnEditar__Todos.UseVisualStyleBackColor = true;
+            this.btnEditar__Todos.UseVisualStyleBackColor = false;
             this.btnEditar__Todos.Click += new System.EventHandler(this.btnEditar__Todos_Click);
             // 
             // btnBorrar__Todos
             // 
+            this.btnBorrar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnBorrar__Todos.Location = new System.Drawing.Point(368, 390);
             this.btnBorrar__Todos.Name = "btnBorrar__Todos";
             this.btnBorrar__Todos.Size = new System.Drawing.Size(136, 35);
             this.btnBorrar__Todos.TabIndex = 8;
             this.btnBorrar__Todos.Text = "Borrar";
-            this.btnBorrar__Todos.UseVisualStyleBackColor = true;
+            this.btnBorrar__Todos.UseVisualStyleBackColor = false;
             this.btnBorrar__Todos.Click += new System.EventHandler(this.btnBorrar__Todos_Click);
             // 
             // lblCategorias__Todos
@@ -137,15 +141,17 @@ namespace TpProgramacion
             this.cboCategoria__Todos.Name = "cboCategoria__Todos";
             this.cboCategoria__Todos.Size = new System.Drawing.Size(200, 21);
             this.cboCategoria__Todos.TabIndex = 9;
+            this.cboCategoria__Todos.DropDownClosed += new System.EventHandler(this.cboCategoria__Todos_DropDownClosed);
             // 
             // btnVerDetalle__Todos
             // 
+            this.btnVerDetalle__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnVerDetalle__Todos.Location = new System.Drawing.Point(543, 390);
             this.btnVerDetalle__Todos.Name = "btnVerDetalle__Todos";
             this.btnVerDetalle__Todos.Size = new System.Drawing.Size(136, 35);
             this.btnVerDetalle__Todos.TabIndex = 11;
             this.btnVerDetalle__Todos.Text = "Ver Detalle";
-            this.btnVerDetalle__Todos.UseVisualStyleBackColor = true;
+            this.btnVerDetalle__Todos.UseVisualStyleBackColor = false;
             this.btnVerDetalle__Todos.Click += new System.EventHandler(this.btnVerDetalle__Todos_Click);
             // 
             // lblOrden__todos
@@ -169,6 +175,8 @@ namespace TpProgramacion
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.lblOrden__todos);
             this.panel2.Controls.Add(this.cboOrdenPrice__Todos);
             this.panel2.Controls.Add(this.lblCategorias__Todos);
@@ -184,8 +192,11 @@ namespace TpProgramacion
             // dvgTodosLosProductos
             // 
             this.dvgTodosLosProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgTodosLosProductos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dvgTodosLosProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dvgTodosLosProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgTodosLosProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dvgTodosLosProductos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dvgTodosLosProductos.Location = new System.Drawing.Point(22, 12);
             this.dvgTodosLosProductos.MultiSelect = false;
             this.dvgTodosLosProductos.Name = "dvgTodosLosProductos";
@@ -197,12 +208,13 @@ namespace TpProgramacion
             // 
             // pbxTodos
             // 
-            this.pbxTodos.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pbxTodos.Location = new System.Drawing.Point(870, 12);
-            this.pbxTodos.Margin = new System.Windows.Forms.Padding(0);
+            this.pbxTodos.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pbxTodos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxTodos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxTodos.Location = new System.Drawing.Point(751, 12);
+            this.pbxTodos.Margin = new System.Windows.Forms.Padding(2);
             this.pbxTodos.Name = "pbxTodos";
-            this.pbxTodos.Padding = new System.Windows.Forms.Padding(0, 0, 33, 0);
-            this.pbxTodos.Size = new System.Drawing.Size(231, 234);
+            this.pbxTodos.Size = new System.Drawing.Size(261, 234);
             this.pbxTodos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxTodos.TabIndex = 5;
             this.pbxTodos.TabStop = false;
@@ -212,6 +224,7 @@ namespace TpProgramacion
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1135, 456);
             this.Controls.Add(this.pbxTodos);
             this.Controls.Add(this.dvgTodosLosProductos);
