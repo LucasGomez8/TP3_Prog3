@@ -13,6 +13,9 @@ namespace TpProgramacion
 
         private List<Product> productlist;
 
+        private int filtroBrand = 0;
+        private int filtroCategory = 0;
+        private int filtroOrder = 0;
 
         private Product productSelected;
 
@@ -31,9 +34,9 @@ namespace TpProgramacion
             CommerceConnecction cc = new CommerceConnecction();
             try
             {
-                productlist = cc.listarProducto();
                 setComboBoxes();
-                setup();       
+                productlist = cc.listarProducto();
+                setup();
             }
             catch (Exception)
             {
@@ -46,6 +49,7 @@ namespace TpProgramacion
         {
 
             List<Product> filter = new List<Product>();
+
             foreach (Product items in productlist)
             {
                 if (itsBrand)
@@ -63,6 +67,32 @@ namespace TpProgramacion
                     }
                 }    
             }
+
+            dvgTodosLosProductos.DataSource = filter;
+        }
+
+        private void aplicarFilters()
+        {
+            List<Product> filter = new List<Product>();
+
+            foreach (Product items in productlist)
+            {
+                if (items.Marca.IdComercialBrand == filtroBrand || filtroBrand == 0)
+                {
+                    if (!filter.Contains(items))
+                    {
+                        filter.Add(items);
+                    }
+                }
+                if (items.Categoria.IdCategory == filtroCategory || filtroCategory == 0)
+                {
+                    if (!filter.Contains(items))
+                    {
+                        filter.Add(items);
+                    }
+                }
+            }
+
             dvgTodosLosProductos.DataSource = filter;
         }
 
@@ -95,6 +125,7 @@ namespace TpProgramacion
             }
 
             List<string> priceOrder = new List<string>();
+            priceOrder.Add(" ");
             priceOrder.Add("Ascendente");
             priceOrder.Add("Descendente");
             cboOrdenPrice__Todos.DataSource = priceOrder;
@@ -222,8 +253,9 @@ namespace TpProgramacion
 
         private void cboMarca__Todos_DropDownClosed(object sender, EventArgs e)
         {
-            int brandSelected = cboMarca__Todos.SelectedIndex;
-            
+            filtroBrand = cboMarca__Todos.SelectedIndex;
+            aplicarFilters();
+           /* 
             if(brandSelected == 0)
             {
                 load();
@@ -231,13 +263,14 @@ namespace TpProgramacion
             else
             {
                 filterLoad(brandSelected,true);
-            }
+            }*/
         }
 
         private void cboCategoria__Todos_DropDownClosed(object sender, EventArgs e)
         {
-            int categorySelected = cboCategoria__Todos.SelectedIndex;
-            
+            filtroCategory = cboCategoria__Todos.SelectedIndex;
+            aplicarFilters();
+            /*
             if(categorySelected == 0)
             {
                 load();
@@ -245,7 +278,7 @@ namespace TpProgramacion
             else
             {
                 filterLoad(categorySelected,false);
-            }
+            }*/
         }
     }
 }
