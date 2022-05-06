@@ -26,6 +26,7 @@ namespace TpProgramacion
 
         private void frmMuchosProductos_Load(object sender, EventArgs e)
         {
+            setComboBoxes();
             load();
         }
 
@@ -34,7 +35,6 @@ namespace TpProgramacion
             CommerceConnecction cc = new CommerceConnecction();
             try
             {
-                setComboBoxes();
                 productlist = cc.listarProducto();
                 setup();
             }
@@ -45,59 +45,36 @@ namespace TpProgramacion
             }
         }
 
-        private void filterLoad(int e, bool itsBrand)
-        {
-
-            List<Product> filter = new List<Product>();
-
-            foreach (Product items in productlist)
-            {
-                if (itsBrand)
-                {
-                    if (items.Marca.IdComercialBrand == e)
-                    {
-                        filter.Add(items);
-                    }
-                }
-                else
-                {
-                    if (items.Categoria.IdCategory == e)
-                    {
-                        filter.Add(items);
-                    }
-                }    
-            }
-
-            dvgTodosLosProductos.DataSource = filter;
-        }
-
         private void aplicarFilters()
         {
             List<Product> filter = new List<Product>();
 
-            foreach (Product items in productlist)
+            if (filtroBrand == 0 && filtroCategory == 0)
             {
-                if (items.Marca.IdComercialBrand == filtroBrand || filtroBrand == 0)
-                {
-                    if (!filter.Contains(items))
-                    {
-                        filter.Add(items);
-                    }
-                }
-                if (items.Categoria.IdCategory == filtroCategory || filtroCategory == 0)
-                {
-                    if (!filter.Contains(items))
-                    {
-                        filter.Add(items);
-                    }
-                }
+                load();
+                return;
             }
 
+            foreach (Product items in productlist)
+            {
+                if (items.Marca.IdComercialBrand != filtroBrand && filtroBrand != 0)
+                {
+                    continue;
+                }
+                if (items.Categoria.IdCategory != filtroCategory && filtroCategory != 0)
+                {
+                    continue;
+                }
+                filter.Add(items);
+            }
+
+            orderList(filter);
             dvgTodosLosProductos.DataSource = filter;
         }
 
         private void setup()
         {
+            orderList(productlist);
             dvgTodosLosProductos.DataSource = productlist;
             dvgTodosLosProductos.Refresh();
             dvgTodosLosProductos.Columns["UrlImagen"].Visible = false;
@@ -125,47 +102,53 @@ namespace TpProgramacion
             }
 
             List<string> priceOrder = new List<string>();
-            priceOrder.Add(" ");
+            priceOrder.Add("Sin Especificar");
             priceOrder.Add("Ascendente");
             priceOrder.Add("Descendente");
             cboOrdenPrice__Todos.DataSource = priceOrder;
         }
 
-        private void orderList(bool asc)
+        private void orderList(List<Product> listToOrder)
         {
-            if (asc)
-            {
-                for (int i = 0; i < productlist.Count; i++)
-                {
-                    for (int x = 0; x < productlist.Count; x++)
-                    {
-                        if (productlist[i].Precio < productlist[x].Precio)
-                        {
-                            Product aux = productlist[i];
-                            productlist[i] = productlist[x];
-                            productlist[x] = aux;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < productlist.Count; i++)
-                {
-                    for (int x = 0; x < productlist.Count; x++)
-                    {
-                        if (productlist[i].Precio > productlist[x].Precio)
-                        {
-                            Product aux = productlist[i];
-                            productlist[i] = productlist[x];
-                            productlist[x] = aux;
-                        }
-                    }
-                }
-            }
+
+            if (listToOrder == null) return;
             
-            setup();
+            switch (filtroOrder)
+            {
+                case 1:
+                    for (int i = 0; i < listToOrder.Count; i++)
+                    {
+                        for (int x = 0; x < listToOrder.Count; x++)
+                        {
+                            if (listToOrder[i].Precio < listToOrder[x].Precio)
+                            {
+                                Product aux = listToOrder[i];
+                                listToOrder[i] = listToOrder[x];
+                                listToOrder[x] = aux;
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < listToOrder.Count; i++)
+                    {
+                        for (int x = 0; x < listToOrder.Count; x++)
+                        {
+                            if (listToOrder[i].Precio > listToOrder[x].Precio)
+                            {
+                                Product aux = listToOrder[i];
+                                listToOrder[i] = listToOrder[x];
+                                listToOrder[x] = aux;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    return;
+            }
+           
         }
+
         public void imageLoad(string img)
         {
             try
@@ -239,46 +222,20 @@ namespace TpProgramacion
 
         private void cboOrdenPrice__Todos_DropDownClosed(object sender, EventArgs e)
         {
-            int orderSelected = cboOrdenPrice__Todos.SelectedIndex;
-
-            if (orderSelected == 0)
-            {
-                orderList(true);
-            }
-            else
-            {
-                orderList(false);
-            }
+            filtroOrder = cboOrdenPrice__Todos.SelectedIndex;
+            aplicarFilters();
         }
 
         private void cboMarca__Todos_DropDownClosed(object sender, EventArgs e)
         {
             filtroBrand = cboMarca__Todos.SelectedIndex;
             aplicarFilters();
-           /* 
-            if(brandSelected == 0)
-            {
-                load();
-            }
-            else
-            {
-                filterLoad(brandSelected,true);
-            }*/
         }
 
         private void cboCategoria__Todos_DropDownClosed(object sender, EventArgs e)
         {
             filtroCategory = cboCategoria__Todos.SelectedIndex;
             aplicarFilters();
-            /*
-            if(categorySelected == 0)
-            {
-                load();
-            }
-            else
-            {
-                filterLoad(categorySelected,false);
-            }*/
         }
     }
 }

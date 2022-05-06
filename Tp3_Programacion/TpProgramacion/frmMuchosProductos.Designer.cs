@@ -54,10 +54,12 @@ namespace TpProgramacion
             // 
             // cboMarca__Todos
             // 
+            this.cboMarca__Todos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca__Todos.FormattingEnabled = true;
-            this.cboMarca__Todos.Location = new System.Drawing.Point(7, 34);
+            this.cboMarca__Todos.Location = new System.Drawing.Point(10, 52);
+            this.cboMarca__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboMarca__Todos.Name = "cboMarca__Todos";
-            this.cboMarca__Todos.Size = new System.Drawing.Size(200, 21);
+            this.cboMarca__Todos.Size = new System.Drawing.Size(298, 28);
             this.cboMarca__Todos.TabIndex = 2;
             this.cboMarca__Todos.DropDownClosed += new System.EventHandler(this.cboMarca__Todos_DropDownClosed);
             // 
@@ -65,9 +67,10 @@ namespace TpProgramacion
             // 
             this.lblMarca__muchos.AutoSize = true;
             this.lblMarca__muchos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca__muchos.Location = new System.Drawing.Point(4, 15);
+            this.lblMarca__muchos.Location = new System.Drawing.Point(6, 23);
+            this.lblMarca__muchos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarca__muchos.Name = "lblMarca__muchos";
-            this.lblMarca__muchos.Size = new System.Drawing.Size(105, 16);
+            this.lblMarca__muchos.Size = new System.Drawing.Size(153, 25);
             this.lblMarca__muchos.TabIndex = 3;
             this.lblMarca__muchos.Text = "Filtrar por Marca";
             // 
@@ -94,9 +97,10 @@ namespace TpProgramacion
             // btnAgregar_Todos
             // 
             this.btnAgregar_Todos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnAgregar_Todos.Location = new System.Drawing.Point(15, 390);
+            this.btnAgregar_Todos.Location = new System.Drawing.Point(22, 600);
+            this.btnAgregar_Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAgregar_Todos.Name = "btnAgregar_Todos";
-            this.btnAgregar_Todos.Size = new System.Drawing.Size(136, 35);
+            this.btnAgregar_Todos.Size = new System.Drawing.Size(204, 54);
             this.btnAgregar_Todos.TabIndex = 6;
             this.btnAgregar_Todos.Text = "Agregar";
             this.btnAgregar_Todos.UseVisualStyleBackColor = false;
@@ -105,9 +109,10 @@ namespace TpProgramacion
             // btnEditar__Todos
             // 
             this.btnEditar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnEditar__Todos.Location = new System.Drawing.Point(194, 390);
+            this.btnEditar__Todos.Location = new System.Drawing.Point(291, 600);
+            this.btnEditar__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEditar__Todos.Name = "btnEditar__Todos";
-            this.btnEditar__Todos.Size = new System.Drawing.Size(136, 35);
+            this.btnEditar__Todos.Size = new System.Drawing.Size(204, 54);
             this.btnEditar__Todos.TabIndex = 7;
             this.btnEditar__Todos.Text = "Editar";
             this.btnEditar__Todos.UseVisualStyleBackColor = false;
@@ -116,9 +121,10 @@ namespace TpProgramacion
             // btnBorrar__Todos
             // 
             this.btnBorrar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBorrar__Todos.Location = new System.Drawing.Point(368, 390);
+            this.btnBorrar__Todos.Location = new System.Drawing.Point(552, 600);
+            this.btnBorrar__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBorrar__Todos.Name = "btnBorrar__Todos";
-            this.btnBorrar__Todos.Size = new System.Drawing.Size(136, 35);
+            this.btnBorrar__Todos.Size = new System.Drawing.Size(204, 54);
             this.btnBorrar__Todos.TabIndex = 8;
             this.btnBorrar__Todos.Text = "Borrar";
             this.btnBorrar__Todos.UseVisualStyleBackColor = false;
@@ -128,27 +134,31 @@ namespace TpProgramacion
             // 
             this.lblCategorias__Todos.AutoSize = true;
             this.lblCategorias__Todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategorias__Todos.Location = new System.Drawing.Point(267, 15);
+            this.lblCategorias__Todos.Location = new System.Drawing.Point(400, 23);
+            this.lblCategorias__Todos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategorias__Todos.Name = "lblCategorias__Todos";
-            this.lblCategorias__Todos.Size = new System.Drawing.Size(126, 16);
+            this.lblCategorias__Todos.Size = new System.Drawing.Size(183, 25);
             this.lblCategorias__Todos.TabIndex = 10;
             this.lblCategorias__Todos.Text = "Filtrar por Categoria";
             // 
             // cboCategoria__Todos
             // 
+            this.cboCategoria__Todos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria__Todos.FormattingEnabled = true;
-            this.cboCategoria__Todos.Location = new System.Drawing.Point(270, 34);
+            this.cboCategoria__Todos.Location = new System.Drawing.Point(405, 52);
+            this.cboCategoria__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboCategoria__Todos.Name = "cboCategoria__Todos";
-            this.cboCategoria__Todos.Size = new System.Drawing.Size(200, 21);
+            this.cboCategoria__Todos.Size = new System.Drawing.Size(298, 28);
             this.cboCategoria__Todos.TabIndex = 9;
             this.cboCategoria__Todos.DropDownClosed += new System.EventHandler(this.cboCategoria__Todos_DropDownClosed);
             // 
             // btnVerDetalle__Todos
             // 
             this.btnVerDetalle__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnVerDetalle__Todos.Location = new System.Drawing.Point(543, 390);
+            this.btnVerDetalle__Todos.Location = new System.Drawing.Point(814, 600);
+            this.btnVerDetalle__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVerDetalle__Todos.Name = "btnVerDetalle__Todos";
-            this.btnVerDetalle__Todos.Size = new System.Drawing.Size(136, 35);
+            this.btnVerDetalle__Todos.Size = new System.Drawing.Size(204, 54);
             this.btnVerDetalle__Todos.TabIndex = 11;
             this.btnVerDetalle__Todos.Text = "Ver Detalle";
             this.btnVerDetalle__Todos.UseVisualStyleBackColor = false;
@@ -158,18 +168,21 @@ namespace TpProgramacion
             // 
             this.lblOrden__todos.AutoSize = true;
             this.lblOrden__todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrden__todos.Location = new System.Drawing.Point(532, 15);
+            this.lblOrden__todos.Location = new System.Drawing.Point(798, 23);
+            this.lblOrden__todos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrden__todos.Name = "lblOrden__todos";
-            this.lblOrden__todos.Size = new System.Drawing.Size(121, 16);
+            this.lblOrden__todos.Size = new System.Drawing.Size(175, 25);
             this.lblOrden__todos.TabIndex = 13;
             this.lblOrden__todos.Text = "Ordenar por precio";
             // 
             // cboOrdenPrice__Todos
             // 
+            this.cboOrdenPrice__Todos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOrdenPrice__Todos.FormattingEnabled = true;
-            this.cboOrdenPrice__Todos.Location = new System.Drawing.Point(532, 34);
+            this.cboOrdenPrice__Todos.Location = new System.Drawing.Point(798, 52);
+            this.cboOrdenPrice__Todos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboOrdenPrice__Todos.Name = "cboOrdenPrice__Todos";
-            this.cboOrdenPrice__Todos.Size = new System.Drawing.Size(200, 21);
+            this.cboOrdenPrice__Todos.Size = new System.Drawing.Size(298, 28);
             this.cboOrdenPrice__Todos.TabIndex = 12;
             this.cboOrdenPrice__Todos.DropDownClosed += new System.EventHandler(this.cboOrdenPrice__Todos_DropDownClosed);
             // 
@@ -183,10 +196,9 @@ namespace TpProgramacion
             this.panel2.Controls.Add(this.cboCategoria__Todos);
             this.panel2.Controls.Add(this.lblMarca__muchos);
             this.panel2.Controls.Add(this.cboMarca__Todos);
-            this.panel2.Location = new System.Drawing.Point(15, 288);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(22, 443);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(749, 69);
+            this.panel2.Size = new System.Drawing.Size(1122, 104);
             this.panel2.TabIndex = 15;
             // 
             // dvgTodosLosProductos
@@ -197,12 +209,13 @@ namespace TpProgramacion
             this.dvgTodosLosProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgTodosLosProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dvgTodosLosProductos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dvgTodosLosProductos.Location = new System.Drawing.Point(22, 12);
+            this.dvgTodosLosProductos.Location = new System.Drawing.Point(33, 18);
+            this.dvgTodosLosProductos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dvgTodosLosProductos.MultiSelect = false;
             this.dvgTodosLosProductos.Name = "dvgTodosLosProductos";
             this.dvgTodosLosProductos.RowHeadersWidth = 62;
             this.dvgTodosLosProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgTodosLosProductos.Size = new System.Drawing.Size(692, 234);
+            this.dvgTodosLosProductos.Size = new System.Drawing.Size(1038, 360);
             this.dvgTodosLosProductos.TabIndex = 4;
             this.dvgTodosLosProductos.SelectionChanged += new System.EventHandler(this.dvgTodosLosProductos_SelectionChanged);
             // 
@@ -211,21 +224,20 @@ namespace TpProgramacion
             this.pbxTodos.BackColor = System.Drawing.SystemColors.HotTrack;
             this.pbxTodos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxTodos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxTodos.Location = new System.Drawing.Point(751, 12);
-            this.pbxTodos.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxTodos.Location = new System.Drawing.Point(1126, 18);
             this.pbxTodos.Name = "pbxTodos";
-            this.pbxTodos.Size = new System.Drawing.Size(261, 234);
+            this.pbxTodos.Size = new System.Drawing.Size(390, 358);
             this.pbxTodos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxTodos.TabIndex = 5;
             this.pbxTodos.TabStop = false;
             // 
             // frmMuchosProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1135, 456);
+            this.ClientSize = new System.Drawing.Size(1694, 675);
             this.Controls.Add(this.pbxTodos);
             this.Controls.Add(this.dvgTodosLosProductos);
             this.Controls.Add(this.panel2);
@@ -233,10 +245,9 @@ namespace TpProgramacion
             this.Controls.Add(this.btnBorrar__Todos);
             this.Controls.Add(this.btnEditar__Todos);
             this.Controls.Add(this.btnAgregar_Todos);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1151, 495);
-            this.MinimumSize = new System.Drawing.Size(1151, 495);
+            this.MaximumSize = new System.Drawing.Size(1716, 731);
+            this.MinimumSize = new System.Drawing.Size(1716, 731);
             this.Name = "frmMuchosProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Todos los productos";
