@@ -46,6 +46,7 @@ namespace TpProgramacion
             this.lblUrlImage_Nuevo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelar__Nuevo = new System.Windows.Forms.Button();
+            this.btnAdd_LocalImage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,6 +194,7 @@ namespace TpProgramacion
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox1.Controls.Add(this.btnAdd_LocalImage);
             this.groupBox1.Controls.Add(this.lblCodArticulo__Nuevo);
             this.groupBox1.Controls.Add(this.lblNombre__Nuevo);
             this.groupBox1.Controls.Add(this.txtUrlImagen_Nuevo);
@@ -225,6 +227,16 @@ namespace TpProgramacion
             this.btnCancelar__Nuevo.Text = "Cancelar";
             this.btnCancelar__Nuevo.UseVisualStyleBackColor = true;
             this.btnCancelar__Nuevo.Click += new System.EventHandler(this.btnCancelar__Nuevo_Click);
+            // 
+            // btnAdd_LocalImage
+            // 
+            this.btnAdd_LocalImage.Location = new System.Drawing.Point(314, 351);
+            this.btnAdd_LocalImage.Name = "btnAdd_LocalImage";
+            this.btnAdd_LocalImage.Size = new System.Drawing.Size(23, 26);
+            this.btnAdd_LocalImage.TabIndex = 23;
+            this.btnAdd_LocalImage.Text = "+";
+            this.btnAdd_LocalImage.UseVisualStyleBackColor = true;
+            this.btnAdd_LocalImage.Click += new System.EventHandler(this.btnAdd_LocalImage_Click);
             // 
             // frmNuevoProducto
             // 
@@ -264,5 +276,6 @@ namespace TpProgramacion
         private System.Windows.Forms.Label lblUrlImage_Nuevo;
         public System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancelar__Nuevo;
+        private System.Windows.Forms.Button btnAdd_LocalImage;
     }
 }

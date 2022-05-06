@@ -3,6 +3,8 @@ using services;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.IO;
+using System.Configuration;
 
 namespace TpProgramacion
 {
@@ -11,6 +13,7 @@ namespace TpProgramacion
 
         private Product product = null;
 
+        private OpenFileDialog imageLoad = null;
         public frmNuevoProducto(Product edit)
         {
             InitializeComponent();
@@ -39,7 +42,6 @@ namespace TpProgramacion
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Ocurrio un error al cargar el producto.");
             }
 
@@ -127,15 +129,22 @@ namespace TpProgramacion
             string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
             product.Categoria.IdCategory = Convert.ToInt32(idCategory);
             product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
-            product.urlImagen = txtUrlImagen_Nuevo.Text;
+            product.urlImagen = ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName;
         }
 
         private void onEdit()
         {
             CommerceConnecction CC = new CommerceConnecction();
 
-            if (CC.editProduct(product) != 0)
+            if (CC.editProduct(product) != 0) {
                 MessageBox.Show("Se ha Modificado con exito");
+                if (imageLoad != null && !txtUrlImagen_Nuevo.Text.ToUpper().Contains("HTTP"))
+                {
+                    checkAndCreateFolder();
+
+                    File.Copy(imageLoad.FileName, ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName, true);
+                } 
+            }
             else
                 MessageBox.Show("No se pudo modificar el articulo");
 
@@ -145,9 +154,17 @@ namespace TpProgramacion
         private void onAdd()
         {
             CommerceConnecction CC = new CommerceConnecction();
-            
+
             if (CC.addProduct(product) != 0)
+            {
                 MessageBox.Show("Se ha agregado el articulo con exito");
+                if (imageLoad != null && !txtUrlImagen_Nuevo.Text.ToUpper().Contains("HTTP"))
+                {
+                    checkAndCreateFolder();
+
+                    File.Copy(imageLoad.FileName, ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName, true);
+                }
+            }
             else
                 MessageBox.Show("No se pudo modificar el articulo");
 
@@ -157,6 +174,27 @@ namespace TpProgramacion
         private void btnCancelar__Nuevo_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAdd_LocalImage_Click(object sender, EventArgs e)
+        {
+            imageLoad = new OpenFileDialog();
+            imageLoad.Filter = "jpg|*.jpg;|png|*.png";
+
+            if (imageLoad.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlImagen_Nuevo.Text = imageLoad.FileName;
+            }
+
+        }
+
+        private void checkAndCreateFolder()
+        {
+            string folder = ConfigurationManager.AppSettings["images-folder"];
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
         }
     }
 }
