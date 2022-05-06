@@ -89,6 +89,11 @@ namespace TpProgramacion
             
             if (comercialBrands != null)
             {
+                DataRow none = comercialBrands.NewRow();
+                none["id"] = 0;
+                none["descripcion"] = "Todos";
+                comercialBrands.Rows.InsertAt(none, 0);
+
                 cboMarca__Todos.DataSource = comercialBrands;
                 cboMarca__Todos.DisplayMember = "descripcion";
                 cboMarca__Todos.ValueMember = "id";
@@ -96,6 +101,11 @@ namespace TpProgramacion
             }
             if (categories != null)
             {
+                DataRow none = categories.NewRow();
+                none["id"] = 0;
+                none["descripcion"] = "Todos";
+                categories.Rows.InsertAt(none, 0);
+
                 cboCategoria__Todos.DataSource = categories;
                 cboCategoria__Todos.DisplayMember = "descripcion";
                 cboCategoria__Todos.ValueMember = "id";

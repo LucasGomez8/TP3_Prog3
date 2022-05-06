@@ -188,10 +188,6 @@ namespace services
             DataAccess response = new DataAccess();
             data.Columns.Add("id");
             data.Columns.Add("descripcion");
-            DataRow none = data.NewRow();
-            none["id"] = 0;
-            none["descripcion"] = "Todos";
-            data.Rows.Add(none);
 
             try
             {
