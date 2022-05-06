@@ -167,7 +167,7 @@ namespace TpProgramacion
             }
             catch (Exception)
             {
-                pbxTodos.Load("https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100006.jpg");
+                pbxTodos.Image = Properties.Resources.image_default;
             }
             
         }

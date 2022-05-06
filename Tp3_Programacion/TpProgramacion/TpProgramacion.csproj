@@ -138,5 +138,8 @@
   <ItemGroup>
     <None Include="Resources\searchb2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-default.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

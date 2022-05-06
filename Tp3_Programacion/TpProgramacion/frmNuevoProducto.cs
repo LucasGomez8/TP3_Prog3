@@ -90,22 +90,12 @@ namespace TpProgramacion
 
             if (comercialBrands != null)
             {
-                DataRow none = comercialBrands.NewRow();
-                none["id"] = 0;
-                none["descripcion"] = "Otros";
-                comercialBrands.Rows.InsertAt(none, 0);
-
                 cbMarca_Nuevo.DataSource = comercialBrands;
                 cbMarca_Nuevo.DisplayMember = "descripcion";
                 cbMarca_Nuevo.ValueMember = "id";
             }
             if (categories != null)
             {
-                DataRow none = categories.NewRow();
-                none["id"] = 0;
-                none["descripcion"] = "Otros";
-                categories.Rows.InsertAt(none, 0);
-
                 cbCategoria_Nuevo.DataSource = categories;
                 cbCategoria_Nuevo.DisplayMember = "descripcion";
                 cbCategoria_Nuevo.ValueMember = "id";
