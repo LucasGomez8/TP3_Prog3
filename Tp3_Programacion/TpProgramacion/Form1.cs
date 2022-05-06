@@ -17,11 +17,6 @@ namespace TpProgramacion
             CommerceConnecction datos = new CommerceConnecction();
         }
 
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnOnlyProduct_Click(object sender, EventArgs e)
         {
             frmOnlyProduct onlyp = new frmOnlyProduct(null);
@@ -33,5 +28,6 @@ namespace TpProgramacion
             frmMuchosProductos muchop = new frmMuchosProductos();
             muchop.ShowDialog();
         }
+
     }
 }

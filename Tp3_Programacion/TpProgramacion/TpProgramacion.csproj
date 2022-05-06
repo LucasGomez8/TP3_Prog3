@@ -94,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,6 +118,24 @@
       <Project>{156d75d4-0926-4cdf-bff4-26a34fc80afc}</Project>
       <Name>services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e00116ec7e1f46b489cf67c002af2743.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searchb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searchb1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searchb2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

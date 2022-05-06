@@ -157,7 +157,7 @@ namespace TpProgramacion
             }
             catch (Exception)
             {
-                pbxTodos.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png");
+                pbxTodos.Load("https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100006.jpg");
             }
             
         }
