@@ -16,7 +16,9 @@ namespace services
             try
             {
 
-                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.Id as CID, C.Descripcion as Categoria From ARTICULOS A, MARCAS M, CATEGORIAS C where A.Idmarca = M.Id AND C.Id=A.IdCategoria");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, "+
+                    "M.Id as MID, C.Id as CID, C.Descripcion as Categoria From ARTICULOS A, MARCAS M, CATEGORIAS C"+
+                    " where A.Idmarca = M.Id AND C.Id=A.IdCategoria AND Active = 1");
                 da.execute();
 
                 while (da.dataReader.Read())
@@ -60,8 +62,8 @@ namespace services
             {
 
                 da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, " + 
-                    "M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca " + 
-                    "left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Codigo = @Codigo");
+                    "M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca " +
+                    "left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Codigo = @Codigo AND Active = 1");
                 da.setConsultaWhitParameters("@Codigo", e);
 
                 da.execute();
@@ -89,7 +91,8 @@ namespace services
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine("Erro al conectar con la base de datos." + ex.Message);
+                throw;
             }
             finally
             {
@@ -105,7 +108,12 @@ namespace services
 
             try
             {
-                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl, M.Descripcion as Marca, M.Id as MID, C.ID as CID, C.Descripcion as Categoria From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left join CATEGORIAS C ON C.ID = A.IdCategoria where A.Nombre = '" + e + "'");
+                da.setConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.ImagenUrl,"+
+                    " M.Descripcion as Marca, M.Id as MID, C.ID as CID, C.Descripcion as Categoria "+
+                    "From ARTICULOS A left join MARCAS M on M.Id = A.IdMarca left "+
+                    "join CATEGORIAS C ON C.ID = A.IdCategoria where A.Nombre = @Nombre AND Active = 1");
+                da.setConsultaWhitParameters("@Nombre", e);
+
                 da.execute();
 
                 if (da.dataReader.Read())
@@ -132,7 +140,8 @@ namespace services
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine("Erro al conecta con la base de datos." + ex.Message);
+                throw;
             }
             finally
             {
@@ -145,7 +154,16 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "'," + adding.Marca.IdComercialBrand + "," + adding.Categoria.IdCategory + ",'" + adding.urlImagen + "'," + adding.Precio + ")");
+                da.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio, Active) "+
+                    "values(@Codigo, @Nombre, @Descripcion, @idMarca, @idcategoria, @Imagen, @precio, 1");
+                da.setConsultaWhitParameters("@Codigo", adding.codArticulo);
+                da.setConsultaWhitParameters("@Nombre", adding.Nombre);
+                da.setConsultaWhitParameters("@Descripcion", adding.Descripcion);
+                da.setConsultaWhitParameters("@Imagen", adding.urlImagen);
+                da.setConsultaWhitParameters("@idmarca", adding.Marca.IdComercialBrand);
+                da.setConsultaWhitParameters("@idcategoria", adding.Categoria.IdCategory);
+                da.setConsultaWhitParameters("@precio", adding.Precio);
+
                 da.executeAction();
                 return da.getLineCantAfected();
             }
@@ -166,7 +184,7 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("delete articulos where codigo = @Codigo");
+                da.setConsulta("update articulos set active = 0 where codigo = @Codigo");
                 da.setConsultaWhitParameters("@Codigo", del);
                 da.executeAction();
                 return da.getLineCantAfected();

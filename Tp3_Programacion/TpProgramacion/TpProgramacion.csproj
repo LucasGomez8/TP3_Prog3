@@ -115,6 +115,10 @@
       <Project>{3b5fffeb-4c8a-46cf-9828-10de71ca7449}</Project>
       <Name>domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\helpers\helpers.csproj">
+      <Project>{ff1861f9-baf8-49bd-ac3b-c4b01c427874}</Project>
+      <Name>helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\services\services.csproj">
       <Project>{156d75d4-0926-4cdf-bff4-26a34fc80afc}</Project>
       <Name>services</Name>
@@ -140,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\image-default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

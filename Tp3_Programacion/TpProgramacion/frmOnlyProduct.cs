@@ -2,6 +2,7 @@
 using services;
 using System;
 using System.Windows.Forms;
+using helpers;
 
 namespace TpProgramacion.services
 {
@@ -16,32 +17,12 @@ namespace TpProgramacion.services
             this.productoBuscado = product;
         }
 
-        public void imageLoad(string e)
-        {
-            try
-            {
-                pbxImagen__only.Load(e);
-            }
-            catch (Exception)
-            {
-
-                pbxImagen__only.Image = Properties.Resources.image_default;
-            }
-        }
-
         private void btnCodigo__only_Click(object sender, EventArgs e)
         {
             CommerceConnecction cc = new CommerceConnecction();
             productoBuscado = cc.buscarPorCod(txtBCodigo.Text);
 
-            if (productoBuscado != null)
-            {
-                showInfoProduct(productoBuscado);
-            }
-            else
-            {
-                MessageBox.Show("No se encontro articulo.");
-            }
+            showInfoProduct(productoBuscado);
 
         }
 
@@ -50,15 +31,7 @@ namespace TpProgramacion.services
             CommerceConnecction cc = new CommerceConnecction();
             productoBuscado = cc.buscarPorNombre(txtBNombre.Text);
 
-            if (productoBuscado != null)
-            {
-                showInfoProduct(productoBuscado);
-            }
-            else
-            {
-                MessageBox.Show("No se encontro articulo.");
-            }
-
+            showInfoProduct(productoBuscado);
         }
 
         private void frmOnlyProduct_Load(object sender, EventArgs e)
@@ -101,6 +74,7 @@ namespace TpProgramacion.services
                 MessageBox.Show("Primero debe buscar el articulo que quiere borrar.");
                 return;
             }
+
             CommerceConnecction cc = new CommerceConnecction();
             
             if (cc.deleteProduct(productoBuscado.codArticulo) == 0)
@@ -114,12 +88,18 @@ namespace TpProgramacion.services
 
         private void showInfoProduct(Product showProduct)
         {
-            lblR1__only.Text = showProduct.codArticulo;
-            lblR2__only.Text = showProduct.Nombre;
-            lblR4__only.Text = showProduct.Precio.ToString();
-            lblR5__only.Text = showProduct.Marca.Description;
-            imageLoad(showProduct.urlImagen);
-
+            if (showProduct != null)
+            {
+                lblR1__only.Text = showProduct.codArticulo;
+                lblR2__only.Text = showProduct.Nombre;
+                lblR4__only.Text = showProduct.Precio.ToString();
+                lblR5__only.Text = showProduct.Marca.Description;
+                ImageHelper.LoadImage(pbxImagen__only, showProduct.urlImagen);
+            }
+            else
+            {
+                MessageBox.Show("No se encontro articulo.");
+            }
         }
     }
 }
