@@ -12,12 +12,13 @@ namespace TpProgramacion
     {
 
         private Product product = null;
-
         private OpenFileDialog imageLoad = null;
+        
         public frmNuevoProducto(Product edit)
         {
             InitializeComponent();
             this.product = edit;
+            
             if (product != null)
             {
                 Text = "Modificar Producto";
@@ -32,6 +33,11 @@ namespace TpProgramacion
         {
             try
             {
+                if (!checkAllImputs())
+                {
+                    MessageBox.Show("Faltan datos necesario en el formulario para completar la tarea", "Revise los datos ingresados");
+                    return;
+                }
                 prepareRequest();
 
                 if (product.Id != 0)
@@ -59,26 +65,30 @@ namespace TpProgramacion
         {
             if (!char.IsControl(e.KeyChar) && 
                 !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.') &&
                 (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
 
-            //string point = "";
             TextBox txtBox = (TextBox)sender;
             // only allow one decimal point
-            if ((e.KeyChar == '.') || (e.KeyChar == ','))
+            if ((e.KeyChar == ','))
             {
-                if ((txtBox.Text.IndexOf('.') > -1) ||
-                (txtBox.Text.IndexOf(',') > -1))
+                if ((txtBox.Text.IndexOf(',') > -1))
                 {
                     e.Handled = true;
                 }
             }
-            
-            //int idxPoint = (sender as TextBox).Text.IndexOf(point);
-            //if (idxPoint + 3 >= txtBox.Text.Length) e.Handled = true;
+
+            // only allow two decimals number
+            int idxPoint = (sender as TextBox).Text.IndexOf(",");
+            if (idxPoint != -1 && !(e.KeyChar == (char)Keys.Back))
+            {
+                if (txtBox.Text.Length - idxPoint >= 3)
+                {
+                    e.Handled = true;
+                }
+            }
             
         }
 
@@ -89,13 +99,21 @@ namespace TpProgramacion
             DataTable categories = CC.getConfigFromDB("Categorias");
 
             if (comercialBrands != null)
-            {
+            { 
+                DataRow none = comercialBrands.NewRow();
+                none["id"] = 0;
+                none["descripcion"] = "";
+                comercialBrands.Rows.InsertAt(none, 0);
                 cbMarca_Nuevo.DataSource = comercialBrands;
                 cbMarca_Nuevo.DisplayMember = "descripcion";
                 cbMarca_Nuevo.ValueMember = "id";
             }
             if (categories != null)
             {
+                DataRow none = categories.NewRow();
+                none["id"] = 0;
+                none["descripcion"] = "";
+                categories.Rows.InsertAt(none, 0);
                 cbCategoria_Nuevo.DataSource = categories;
                 cbCategoria_Nuevo.DisplayMember = "descripcion";
                 cbCategoria_Nuevo.ValueMember = "id";
@@ -112,7 +130,6 @@ namespace TpProgramacion
             txtPrecio_Nuevo.Text = showProduct.Precio.ToString();
             cbMarca_Nuevo.SelectedValue = showProduct.Marca.IdComercialBrand;
             cbCategoria_Nuevo.SelectedValue = showProduct.Categoria.IdCategory;
-
         }
 
         private void prepareRequest()
@@ -129,7 +146,8 @@ namespace TpProgramacion
             string idCategory = cbCategoria_Nuevo.SelectedValue.ToString();
             product.Categoria.IdCategory = Convert.ToInt32(idCategory);
             product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
-            product.urlImagen = ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName;
+            if (imageLoad != null) product.urlImagen = ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName;
+            else product.urlImagen = txtUrlImagen_Nuevo.Text;
         }
 
         private void onEdit()
@@ -196,5 +214,17 @@ namespace TpProgramacion
                 Directory.CreateDirectory(folder);
             }
         }
+    
+        private bool checkAllImputs()
+        {
+            if (txtCodigo__Nuevo.Text.Length == 0) return false;
+            if (txtNombre__Nuevo.Text.Length == 0) return false;
+            if (txtDescripcion__Nuevo.Text.Length == 0) return false;
+            if (txtPrecio_Nuevo.Text.Length == 0) return false;
+            if (cbMarca_Nuevo.SelectedIndex == 0) return false;
+            if (cbCategoria_Nuevo.SelectedIndex == 0) return false;
+
+            return true;
+        }    
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using helpers;
+
 namespace TpProgramacion
 {
     partial class frmNuevoProducto
@@ -161,7 +162,7 @@ namespace TpProgramacion
             this.txtPrecio_Nuevo.Name = "txtPrecio_Nuevo";
             this.txtPrecio_Nuevo.Size = new System.Drawing.Size(148, 26);
             this.txtPrecio_Nuevo.TabIndex = 20;
-            this.txtPrecio_Nuevo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkInputOnlyNumber);
+            this.txtPrecio_Nuevo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(NumberHelper.inputOnlyNumberWithDeicmals);
             // 
             // lblPrecio_Nuevo
             // 

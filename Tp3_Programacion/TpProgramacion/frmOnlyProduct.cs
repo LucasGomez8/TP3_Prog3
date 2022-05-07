@@ -77,13 +77,12 @@ namespace TpProgramacion.services
 
             CommerceConnecction cc = new CommerceConnecction();
             
-            if (cc.deleteProduct(productoBuscado.codArticulo) == 0)
+            if (cc.deleteProduct(productoBuscado.codArticulo) == 1)
             {
                 MessageBox.Show("Articulo eliminado de la Base de Datos");
                 return;
             }
             MessageBox.Show("Ocurrio un error al eliminar el articulo");
-
         }
 
         private void showInfoProduct(Product showProduct)
