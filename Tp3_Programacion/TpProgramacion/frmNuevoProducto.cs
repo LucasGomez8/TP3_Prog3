@@ -61,37 +61,6 @@ namespace TpProgramacion
           
         }
 
-        private void checkInputOnlyNumber(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && 
-                !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            TextBox txtBox = (TextBox)sender;
-            // only allow one decimal point
-            if ((e.KeyChar == '.'))
-            {
-                if ((txtBox.Text.IndexOf('.') > -1))
-                {
-                    e.Handled = true;
-                }
-            }
-
-            // only allow two decimals number
-            int idxPoint = (sender as TextBox).Text.IndexOf(".");
-            if (idxPoint != -1 && !(e.KeyChar == (char)Keys.Back))
-            {
-                if (txtBox.Text.Length - idxPoint >= 3)
-                {
-                    e.Handled = true;
-                }
-            }
-            
-        }
-
         private void setComboBoxes()
         {
             CommerceConnecction CC = new CommerceConnecction();
@@ -148,7 +117,6 @@ namespace TpProgramacion
             product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
             if (imageLoad != null) product.urlImagen = ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName;
             else product.urlImagen = txtUrlImagen_Nuevo.Text;
-            MessageBox.Show("El precio a enviar sera " + product.Precio);
         }
 
 
@@ -229,9 +197,5 @@ namespace TpProgramacion
             return true;
         }
 
-        private void txtPrecio_Nuevo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
     }
 }
