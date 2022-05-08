@@ -247,5 +247,6 @@ namespace TpProgramacion
             filtroCategory = cboCategoria__Todos.SelectedIndex;
             aplicarFilters();
         }
+
     }
 }

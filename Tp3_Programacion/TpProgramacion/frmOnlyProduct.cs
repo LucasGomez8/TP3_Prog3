@@ -39,7 +39,7 @@ namespace TpProgramacion.services
             if (productoBuscado != null)
             {
                 Text = "Detalles del Articulo";
-                pnlBuscar.Visible = false;
+                //pnlBuscar.Visible = false;
                 btnAgregar__only.Visible = false;
                 showInfoProduct(productoBuscado);
             }

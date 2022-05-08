@@ -48,8 +48,8 @@ namespace TpProgramacion
             this.dvgTodosLosProductos = new System.Windows.Forms.DataGridView();
             this.pbxTodos = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgTodosLosProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTodos)).BeginInit();
@@ -63,7 +63,7 @@ namespace TpProgramacion
             this.cboMarca__Todos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cboMarca__Todos.FormattingEnabled = true;
             this.cboMarca__Todos.Location = new System.Drawing.Point(9, 42);
-            this.cboMarca__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMarca__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.cboMarca__Todos.Name = "cboMarca__Todos";
             this.cboMarca__Todos.Size = new System.Drawing.Size(265, 24);
             this.cboMarca__Todos.TabIndex = 2;
@@ -106,7 +106,7 @@ namespace TpProgramacion
             this.btnAgregar_Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnAgregar_Todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar_Todos.Location = new System.Drawing.Point(13, 491);
-            this.btnAgregar_Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar_Todos.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar_Todos.Name = "btnAgregar_Todos";
             this.btnAgregar_Todos.Size = new System.Drawing.Size(181, 43);
             this.btnAgregar_Todos.TabIndex = 6;
@@ -119,7 +119,7 @@ namespace TpProgramacion
             this.btnEditar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnEditar__Todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar__Todos.Location = new System.Drawing.Point(270, 491);
-            this.btnEditar__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar__Todos.Name = "btnEditar__Todos";
             this.btnEditar__Todos.Size = new System.Drawing.Size(181, 43);
             this.btnEditar__Todos.TabIndex = 7;
@@ -132,7 +132,7 @@ namespace TpProgramacion
             this.btnBorrar__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnBorrar__Todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrar__Todos.Location = new System.Drawing.Point(755, 491);
-            this.btnBorrar__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrar__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrar__Todos.Name = "btnBorrar__Todos";
             this.btnBorrar__Todos.Size = new System.Drawing.Size(181, 43);
             this.btnBorrar__Todos.TabIndex = 8;
@@ -159,7 +159,7 @@ namespace TpProgramacion
             this.cboCategoria__Todos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cboCategoria__Todos.FormattingEnabled = true;
             this.cboCategoria__Todos.Location = new System.Drawing.Point(360, 42);
-            this.cboCategoria__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCategoria__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategoria__Todos.Name = "cboCategoria__Todos";
             this.cboCategoria__Todos.Size = new System.Drawing.Size(265, 24);
             this.cboCategoria__Todos.TabIndex = 9;
@@ -170,7 +170,7 @@ namespace TpProgramacion
             this.btnVerDetalle__Todos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnVerDetalle__Todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerDetalle__Todos.Location = new System.Drawing.Point(515, 491);
-            this.btnVerDetalle__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVerDetalle__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.btnVerDetalle__Todos.Name = "btnVerDetalle__Todos";
             this.btnVerDetalle__Todos.Size = new System.Drawing.Size(181, 43);
             this.btnVerDetalle__Todos.TabIndex = 11;
@@ -197,7 +197,7 @@ namespace TpProgramacion
             this.cboOrdenPrice__Todos.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cboOrdenPrice__Todos.FormattingEnabled = true;
             this.cboOrdenPrice__Todos.Location = new System.Drawing.Point(709, 42);
-            this.cboOrdenPrice__Todos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboOrdenPrice__Todos.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrdenPrice__Todos.Name = "cboOrdenPrice__Todos";
             this.cboOrdenPrice__Todos.Size = new System.Drawing.Size(265, 24);
             this.cboOrdenPrice__Todos.TabIndex = 12;
@@ -226,13 +226,13 @@ namespace TpProgramacion
             this.dvgTodosLosProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgTodosLosProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dvgTodosLosProductos.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dvgTodosLosProductos.Location = new System.Drawing.Point(13, 164);
-            this.dvgTodosLosProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dvgTodosLosProductos.Location = new System.Drawing.Point(13, 137);
+            this.dvgTodosLosProductos.Margin = new System.Windows.Forms.Padding(4);
             this.dvgTodosLosProductos.MultiSelect = false;
             this.dvgTodosLosProductos.Name = "dvgTodosLosProductos";
             this.dvgTodosLosProductos.RowHeadersWidth = 62;
             this.dvgTodosLosProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgTodosLosProductos.Size = new System.Drawing.Size(923, 288);
+            this.dvgTodosLosProductos.Size = new System.Drawing.Size(923, 315);
             this.dvgTodosLosProductos.TabIndex = 4;
             this.dvgTodosLosProductos.SelectionChanged += new System.EventHandler(this.dvgTodosLosProductos_SelectionChanged);
             // 
@@ -241,10 +241,10 @@ namespace TpProgramacion
             this.pbxTodos.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pbxTodos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxTodos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxTodos.Location = new System.Drawing.Point(1050, 164);
+            this.pbxTodos.Location = new System.Drawing.Point(1020, 137);
             this.pbxTodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbxTodos.Name = "pbxTodos";
-            this.pbxTodos.Size = new System.Drawing.Size(347, 287);
+            this.pbxTodos.Size = new System.Drawing.Size(377, 314);
             this.pbxTodos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxTodos.TabIndex = 5;
             this.pbxTodos.TabStop = false;
@@ -261,17 +261,6 @@ namespace TpProgramacion
             this.panel1.Size = new System.Drawing.Size(1492, 109);
             this.panel1.TabIndex = 16;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(52, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 40);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Productos Locos";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -283,6 +272,17 @@ namespace TpProgramacion
             this.label2.TabIndex = 17;
             this.label2.Text = "Siempre Con Vos";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(52, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(317, 40);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Productos Locos";
             // 
             // frmMuchosProductos
             // 
