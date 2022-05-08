@@ -40,6 +40,13 @@ namespace TpProgramacion.services
             {
                 Text = "Detalles del Articulo";
                 //pnlBuscar.Visible = false;
+                lblBCodigo__only.Visible = false;
+                txtBCodigo.Visible = false;
+                btnCodigo__only.Visible = false;
+                lblBNombre.Visible = false;
+                txtBNombre.Visible = false;
+                btnNombre__only.Visible = false;
+
                 btnAgregar__only.Visible = false;
                 showInfoProduct(productoBuscado);
             }

@@ -166,6 +166,7 @@ namespace TpProgramacion
             this.txtPrecio_Nuevo.Name = "txtPrecio_Nuevo";
             this.txtPrecio_Nuevo.Size = new System.Drawing.Size(132, 22);
             this.txtPrecio_Nuevo.TabIndex = 20;
+            this.txtPrecio_Nuevo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(NumberHelper.inputOnlyNumberWithDeicmals);
             // 
             // lblPrecio_Nuevo
             // 

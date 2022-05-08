@@ -253,10 +253,10 @@ namespace services
                 da.executeAction();
                 return da.getLineCantAfected();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 

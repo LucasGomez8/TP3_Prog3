@@ -142,7 +142,6 @@ namespace TpProgramacion
         private void onAdd()
         {
             CommerceConnecction CC = new CommerceConnecction();
-            //CC.addProduct(product);
             if (CC.addProduct(product) != 0)
             {
                 MessageBox.Show("Se ha agregado el articulo con exito");
