@@ -65,23 +65,23 @@ namespace TpProgramacion
         {
             if (!char.IsControl(e.KeyChar) && 
                 !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != ','))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
             TextBox txtBox = (TextBox)sender;
             // only allow one decimal point
-            if ((e.KeyChar == ','))
+            if ((e.KeyChar == '.'))
             {
-                if ((txtBox.Text.IndexOf(',') > -1))
+                if ((txtBox.Text.IndexOf('.') > -1))
                 {
                     e.Handled = true;
                 }
             }
 
             // only allow two decimals number
-            int idxPoint = (sender as TextBox).Text.IndexOf(",");
+            int idxPoint = (sender as TextBox).Text.IndexOf(".");
             if (idxPoint != -1 && !(e.KeyChar == (char)Keys.Back))
             {
                 if (txtBox.Text.Length - idxPoint >= 3)
@@ -150,6 +150,7 @@ namespace TpProgramacion
             else product.urlImagen = txtUrlImagen_Nuevo.Text;
         }
 
+
         private void onEdit()
         {
             CommerceConnecction CC = new CommerceConnecction();
@@ -172,7 +173,7 @@ namespace TpProgramacion
         private void onAdd()
         {
             CommerceConnecction CC = new CommerceConnecction();
-
+            //CC.addProduct(product);
             if (CC.addProduct(product) != 0)
             {
                 MessageBox.Show("Se ha agregado el articulo con exito");
@@ -184,7 +185,7 @@ namespace TpProgramacion
                 }
             }
             else
-                MessageBox.Show("No se pudo modificar el articulo");
+                MessageBox.Show("No se pudo Agregar el articulo");
 
             Close();
         }

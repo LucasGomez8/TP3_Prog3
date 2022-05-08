@@ -76,5 +76,20 @@ namespace services
                 throw ex;
             }
         }
+
+        public void executeAdder()
+        {
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
