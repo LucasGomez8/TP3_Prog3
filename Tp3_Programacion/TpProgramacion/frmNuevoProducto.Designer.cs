@@ -46,8 +46,8 @@ namespace TpProgramacion
             this.txtUrlImagen_Nuevo = new System.Windows.Forms.TextBox();
             this.lblUrlImage_Nuevo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCancelar__Nuevo = new System.Windows.Forms.Button();
             this.btnAdd_LocalImage = new System.Windows.Forms.Button();
+            this.btnCancelar__Nuevo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +162,7 @@ namespace TpProgramacion
             this.txtPrecio_Nuevo.Name = "txtPrecio_Nuevo";
             this.txtPrecio_Nuevo.Size = new System.Drawing.Size(148, 26);
             this.txtPrecio_Nuevo.TabIndex = 20;
-            //this.txtPrecio_Nuevo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(NumberHelper.inputOnlyNumberWithDeicmals);
+            this.txtPrecio_Nuevo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(NumberHelper.inputOnlyNumberWithDeicmals);
             // 
             // lblPrecio_Nuevo
             // 
@@ -218,6 +218,16 @@ namespace TpProgramacion
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
+            // btnAdd_LocalImage
+            // 
+            this.btnAdd_LocalImage.Location = new System.Drawing.Point(314, 351);
+            this.btnAdd_LocalImage.Name = "btnAdd_LocalImage";
+            this.btnAdd_LocalImage.Size = new System.Drawing.Size(23, 26);
+            this.btnAdd_LocalImage.TabIndex = 23;
+            this.btnAdd_LocalImage.Text = "+";
+            this.btnAdd_LocalImage.UseVisualStyleBackColor = true;
+            this.btnAdd_LocalImage.Click += new System.EventHandler(this.btnAdd_LocalImage_Click);
+            // 
             // btnCancelar__Nuevo
             // 
             this.btnCancelar__Nuevo.Location = new System.Drawing.Point(300, 508);
@@ -228,16 +238,6 @@ namespace TpProgramacion
             this.btnCancelar__Nuevo.Text = "Cancelar";
             this.btnCancelar__Nuevo.UseVisualStyleBackColor = true;
             this.btnCancelar__Nuevo.Click += new System.EventHandler(this.btnCancelar__Nuevo_Click);
-            // 
-            // btnAdd_LocalImage
-            // 
-            this.btnAdd_LocalImage.Location = new System.Drawing.Point(314, 351);
-            this.btnAdd_LocalImage.Name = "btnAdd_LocalImage";
-            this.btnAdd_LocalImage.Size = new System.Drawing.Size(23, 26);
-            this.btnAdd_LocalImage.TabIndex = 23;
-            this.btnAdd_LocalImage.Text = "+";
-            this.btnAdd_LocalImage.UseVisualStyleBackColor = true;
-            this.btnAdd_LocalImage.Click += new System.EventHandler(this.btnAdd_LocalImage_Click);
             // 
             // frmNuevoProducto
             // 

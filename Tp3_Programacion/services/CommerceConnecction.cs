@@ -140,7 +140,7 @@ namespace services
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erro al conecta con la base de datos." + ex.Message);
+                Console.WriteLine("Error al conectar con la base de datos." + ex.Message);
                 throw;
             }
             finally
@@ -154,14 +154,23 @@ namespace services
             DataAccess da = new DataAccess();
             try
             {
-                da.setConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values('" + adding.codArticulo + "','" + adding.Nombre + "','" + adding.Descripcion + "','"+adding.Marca.IdComercialBrand+"','"+adding.Categoria.IdCategory+"','"+adding.urlImagen+"',"+adding.Precio+")");
+                da.setConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)"+
+                    " values(@Codigo, @Nombre, @Descripcion, @idmarca, @idcategoria, @Imagen, @precio)");
+                da.setConsultaWhitParameters("@Codigo", adding.codArticulo);
+                da.setConsultaWhitParameters("@Nombre", adding.Nombre);
+                da.setConsultaWhitParameters("@Descripcion", adding.Descripcion);
+                da.setConsultaWhitParameters("@Imagen", adding.urlImagen);
+                da.setConsultaWhitParameters("@idmarca", adding.Marca.IdComercialBrand);
+                da.setConsultaWhitParameters("@idcategoria", adding.Categoria.IdCategory);
+                da.setConsultaWhitParameters("@precio", adding.Precio);
+
                 da.executeAction();
                 return da.getLineCantAfected();
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Console.WriteLine("Error al conectar con la base de datos." + ex.Message);
+                throw;
             }
             finally
             {

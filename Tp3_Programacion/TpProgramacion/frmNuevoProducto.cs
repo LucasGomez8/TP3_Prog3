@@ -148,6 +148,7 @@ namespace TpProgramacion
             product.Precio = Convert.ToDecimal(txtPrecio_Nuevo.Text);
             if (imageLoad != null) product.urlImagen = ConfigurationManager.AppSettings["images-folder"] + imageLoad.SafeFileName;
             else product.urlImagen = txtUrlImagen_Nuevo.Text;
+            MessageBox.Show("El precio a enviar sera " + product.Precio);
         }
 
 
@@ -226,6 +227,11 @@ namespace TpProgramacion
             if (cbCategoria_Nuevo.SelectedIndex == 0) return false;
 
             return true;
-        }    
+        }
+
+        private void txtPrecio_Nuevo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
